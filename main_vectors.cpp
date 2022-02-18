@@ -94,6 +94,11 @@ int main()
 
                 if (score == -1) {
 
+                    if (student.scores.size() == 0) {
+                        student.scores.push_back(0);
+                        break;
+                    }
+
                     // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
                     calculate_averages(student);
                     break;
