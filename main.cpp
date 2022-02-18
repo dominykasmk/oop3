@@ -4,6 +4,8 @@
 #include <iomanip>
 #include <array>
 #include <algorithm>
+#include <random>
+#include <chrono>
 
 
 using std::cout;
@@ -34,6 +36,7 @@ void input_valid_num(int &input, int left_range, int right_range, int special_va
 void calculate_averages(Student &student);
 void ignore_line();
 void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option);
+unsigned generate_random_score();
 
 
 int main()
@@ -58,35 +61,60 @@ int main()
         << "Įveskite -1 jei norite baigti įvedimą\n"
         << "Pažymių kiekis neturi viršyti 10ies" << endl;
 
-    int score;
     int max_num_of_scores = 10;
 
-    while (true) {
 
-        input_valid_num(score, 1, 10, -1);
+    cout << "Ar norėtumėte sugeneruoti pažymius automatiškai?(1/2)\n";
+    int option;
+    input_valid_num(option, 1, 2);
 
-        if (score == -1) {
-
-            // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
-            calculate_averages(student);
-            break;
-        }
-        else {
+    if (option == 1) {
             
-            student.scores[student.num_of_scores++] = score;
-            cout << endl;
+        cout << "Pasirinkite kiek pažymių sugeneruoti(1/10)\n";
+        int amount_to_generate{};
+        input_valid_num(amount_to_generate, 1, 10);
 
-            if (student.num_of_scores == 10) {
+        unsigned score;
+                cout << "Sugeneruoti pažymiai: ";
+        for (int i{}; i < amount_to_generate; i++) {
+                
+                score = generate_random_score();
+                cout << score << " ";
+                student.scores[student.num_of_scores++] = score;
+        }
+        cout << "\n";
+        calculate_averages(student);
+    }
+    else {
+
+        int score;
+        while (true) {
+
+            input_valid_num(score, 1, 10, -1);
+
+            if (score == -1) {
+
+                // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
                 calculate_averages(student);
                 break;
             }
-        }
+            else {
+                
+                student.scores[student.num_of_scores++] = score;
+                cout << endl;
 
+                if (student.num_of_scores == 10) {
+                    calculate_averages(student);
+                    break;
+                }
+            }
+
+        }
     }
+
 
     students[num_of_students++] = student;
     cout << "Pasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
-    int option;
     input_valid_num(option, 1, 2);
     print_students(students, num_of_students, option);
 
@@ -99,28 +127,28 @@ void ignore_line()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-template <typename T>
-T test_validation(T &input, std::string prompt, std::string error_msg)
-{
-    while (true) {
-
-        std::cout << prompt;
-        std::cout << "> ";
-        std::cin >> input;
-
-        if (cin.good()) {
-            break;
-        }
-        else if (cin.fail()) {
-
-            std::cout << error_msg ;
-            std::cin.clear();
-            ignore_line();
-        }
-    }  
-
-    return input;
-}
+//template <typename T>
+//T test_validation(T &input, std::string prompt, std::string error_msg)
+//{
+//    while (true) {
+//
+//        std::cout << prompt;
+//        std::cout << "> ";
+//        std::cin >> input;
+//
+//        if (cin.good()) {
+//            break;
+//        }
+//        else if (cin.fail()) {
+//
+//            std::cout << error_msg ;
+//            std::cin.clear();
+//            ignore_line();
+//        }
+//    }  
+//
+//    return input;
+//}
 
 
 void input_valid_string(std::string &input)
@@ -185,6 +213,7 @@ void calculate_averages(Student &student)
 
     // Surikiuojam pažymius medianos apskaičiavimui
     std::sort (student.scores.begin(), student.scores.begin() + student.num_of_scores);
+
     
     if (student.num_of_scores % 2 == 0) {
         int index2 = (int)student.num_of_scores / 2;
@@ -216,12 +245,21 @@ void print_students(const std::array<Student, 10> &students, int num_of_students
         
         switch (option) {
             case 1:
-                std::cout << students[i].score_average << std::endl << std::endl;
+                std::cout << std::setprecision(2) << students[i].score_average << std::endl << std::endl;
                 break; 
 
             case 2:
-                std::cout << students[i].score_median << std::endl << std:: endl;
+                std::cout << std::setprecision(2) << students[i].score_median << std::endl << std:: endl;
                 break; 
         }
     }
+}
+
+unsigned generate_random_score()
+{
+    using hrClock = std::chrono::high_resolution_clock;
+    std::mt19937 mt(static_cast<long unsigned int>(hrClock::now().time_since_epoch().count()));
+    std::uniform_int_distribution<int> dist(1, 10);
+    
+    return dist(mt);
 }
