@@ -44,77 +44,100 @@ int main()
     constexpr unsigned max_num_of_students = 10;
     unsigned num_of_students = 0;
     array<Student, max_num_of_students> students;
-    Student student;
 
-    cout << "Įveskite studento vardą\n";
-    string first_name;
-    input_valid_string(first_name);
-    student.first_name = first_name;
+    cout << "Jeigu norite baigti įvestį, įveskite 'x'\n";
 
-    cout << "Įveskite studento pavardę\n";
-    string last_name;
-    input_valid_string(last_name);
-    student.last_name = last_name;
+    while (true) {
+
+        Student student;
+        cout << "\nĮveskite studento vardą\n";
+        string input;
+        input_valid_string(input);
+        
+        if (input == "x")
+            break;
+
+        student.first_name = input;
+
+        cout << "\nĮveskite studento pavardę\n";
+        input_valid_string(input);
+        student.last_name = input;
 
 
-    cout << endl << "Veskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
-        << "Įveskite -1 jei norite baigti įvedimą\n"
-        << "Pažymių kiekis neturi viršyti 10ies" << endl;
 
-    int max_num_of_scores = 10;
+        int max_num_of_scores = 10;
 
 
-    cout << "Ar norėtumėte sugeneruoti pažymius automatiškai?(1/2)\n";
-    int option;
-    input_valid_num(option, 1, 2);
+        cout << "\nAr norėtumėte sugeneruoti pažymius automatiškai?(1/2)\n";
+        int option;
+        input_valid_num(option, 1, 2);
 
-    if (option == 1) {
-            
-        cout << "Pasirinkite kiek pažymių sugeneruoti(1/10)\n";
-        int amount_to_generate{};
-        input_valid_num(amount_to_generate, 1, 10);
-
-        unsigned score;
-                cout << "Sugeneruoti pažymiai: ";
-        for (int i{}; i < amount_to_generate; i++) {
+        if (option == 1) {
                 
-                score = generate_random_score();
-                cout << score << " ";
-                student.scores[student.num_of_scores++] = score;
-        }
-        cout << "\n";
-        calculate_averages(student);
-    }
-    else {
+            cout << "\nPasirinkite kiek pažymių sugeneruoti(1/10)\n";
+            int amount_to_generate{};
+            input_valid_num(amount_to_generate, 1, 10);
 
-        int score;
-        while (true) {
-
-            input_valid_num(score, 1, 10, -1);
-
-            if (score == -1) {
-
-                // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
-                calculate_averages(student);
-                break;
+            unsigned score;
+                    cout << "Sugeneruoti pažymiai: ";
+            for (int i{}; i < amount_to_generate; i++) {
+                    
+                    score = generate_random_score();
+                    cout << score << " ";
+                    student.scores[student.num_of_scores++] = score;
             }
-            else {
-                
-                student.scores[student.num_of_scores++] = score;
-                cout << endl;
+            cout << "\n";
+            calculate_averages(student);
+        }
+        else {
 
-                if (student.num_of_scores == 10) {
+            int score;
+            cout << "\nVeskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
+                << "Įveskite -1 jei norite baigti įvedimą\n"
+                << "Pažymių kiekis neturi viršyti 10ies\n" << endl;
+
+            while (true) {
+
+                input_valid_num(score, 1, 10, -1);
+
+                if (score == -1) {
+
+                    // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
                     calculate_averages(student);
                     break;
                 }
-            }
+                else {
+                    
+                    student.scores[student.num_of_scores++] = score;
 
+                    if (student.num_of_scores == 10) {
+                        calculate_averages(student);
+                        break;
+                    }
+                }
+
+            }
+        }
+        
+        cin.clear();
+        ignore_line();
+
+
+        students[num_of_students++] = student;
+        if (num_of_students == 10) {
+            cout << "\nĮvestas maksimalus kiekis studentų.\n";
+            break;
         }
     }
 
 
-    students[num_of_students++] = student;
-    cout << "Pasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
+    if (num_of_students == 0) {
+        cout << "\nNeįvedėte nei vieno studento.\n" << endl;
+        return 0;
+    }
+
+    cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
+    int option;
     input_valid_num(option, 1, 2);
     print_students(students, num_of_students, option);
 
@@ -231,7 +254,7 @@ void calculate_averages(Student &student)
 
 void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option)
 {
-    std::cout << std::setw(15) << std::left << "Pavardė" << std::setw(15) << std::left << "Vardas"
+    std::cout << "\n" << std::setw(15) << std::left << "Pavardė" << std::setw(15) << std::left << "Vardas"
         << std::left << "Galutinis ";
     (option == 1) ? std::cout << "(Vid.)" : std::cout << "(Med).";
     cout << endl << endl;
