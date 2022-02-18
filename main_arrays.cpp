@@ -64,10 +64,7 @@ int main()
         student.last_name = input;
 
 
-
         int max_num_of_scores = 10;
-
-
         cout << "\nAr norėtumėte sugeneruoti pažymius automatiškai?(1/2)\n";
         int option;
         input_valid_num(option, 1, 2);
@@ -76,10 +73,10 @@ int main()
                 
             cout << "\nPasirinkite kiek pažymių sugeneruoti(1/10)\n";
             int amount_to_generate{};
-            input_valid_num(amount_to_generate, 1, 10);
+            input_valid_num(amount_to_generate, 1, max_num_of_scores);
 
             unsigned score;
-                    cout << "Sugeneruoti pažymiai: ";
+            cout << "Sugeneruoti pažymiai: ";
             for (int i{}; i < amount_to_generate; i++) {
                     
                     score = generate_random_score();
