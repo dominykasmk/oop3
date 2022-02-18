@@ -2,17 +2,17 @@
 #include <string>
 #include <limits>
 #include <iomanip>
-#include <array>
 #include <algorithm>
 #include <random>
 #include <chrono>
+#include <vector>
 
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
-using std::array;
+using std::vector;
 
 
 struct Student {
@@ -20,8 +20,7 @@ struct Student {
     string last_name;
 
     unsigned num_of_scores{};
-    static constexpr unsigned max_num_of_scores{10};
-    array<unsigned, max_num_of_scores> scores{};
+    vector<unsigned> scores{};
 
     double score_average{};
     double score_median{};
@@ -35,16 +34,13 @@ void input_valid_string(std::string &input);
 void input_valid_num(int &input, int left_range, int right_range, int special_value = 0);
 void calculate_averages(Student &student);
 void ignore_line();
-void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option);
+void print_students(const std::vector<Student> &students, unsigned option);
 unsigned generate_random_score();
 
 
 int main()
 {
-    constexpr unsigned max_num_of_students = 10;
-    unsigned num_of_students = 0;
-    array<Student, max_num_of_students> students;
-
+    vector<Student> students;
     cout << "Jeigu norite baigti įvestį, įveskite 'x'\n";
 
     while (true) {
@@ -81,7 +77,7 @@ int main()
                     
                     score = generate_random_score();
                     cout << score << " ";
-                    student.scores[student.num_of_scores++] = score;
+                    student.scores.push_back(score);
             }
             cout << "\n";
             calculate_averages(student);
@@ -90,8 +86,7 @@ int main()
 
             int score;
             cout << "\nVeskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
-                << "Įveskite -1 jei norite baigti įvedimą\n"
-                << "Pažymių kiekis neturi viršyti 10ies\n" << endl;
+                << "Įveskite -1 jei norite baigti įvedimą\n\n";
 
             while (true) {
 
@@ -105,7 +100,7 @@ int main()
                 }
                 else {
                     
-                    student.scores[student.num_of_scores++] = score;
+                    student.scores.push_back(score);
 
                     if (student.num_of_scores == 10) {
                         calculate_averages(student);
@@ -118,17 +113,11 @@ int main()
         
         cin.clear();
         ignore_line();
-
-
-        students[num_of_students++] = student;
-        if (num_of_students == 10) {
-            cout << "\nĮvestas maksimalus kiekis studentų.\n";
-            break;
-        }
+        students.push_back(student);
     }
 
 
-    if (num_of_students == 0) {
+    if (students.empty()) {
         cout << "\nNeįvedėte nei vieno studento.\n" << endl;
         return 0;
     }
@@ -136,7 +125,7 @@ int main()
     cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
     int option;
     input_valid_num(option, 1, 2);
-    print_students(students, num_of_students, option);
+    print_students(students, option);
 
     return 0;
 }
@@ -226,30 +215,30 @@ void input_valid_num(int &input, int left_range, int right_range, int special_va
 void calculate_averages(Student &student)
 {
     double average{};
-    for (int i{}; i < student.num_of_scores; i++) {
-        average += student.scores[i];
+    for (auto &score : student.scores) {
+        average += score;
     }
-    student.score_average = average / student.num_of_scores;
+    student.score_average = average / student.scores.size();
 
     // Surikiuojam pažymius medianos apskaičiavimui
-    std::sort (student.scores.begin(), student.scores.begin() + student.num_of_scores);
+    std::sort(student.scores.begin(), student.scores.end());
 
     
     if (student.num_of_scores % 2 == 0) {
-        int index2 = (int)student.num_of_scores / 2;
-        int index1 = (int)student.num_of_scores / 2 - 1;
+        int index2 = student.scores.size() / 2;
+        int index1 = student.scores.size() / 2 - 1;
         double num_1 = student.scores[index1];
         double num_2 = student.scores[index2];
         student.score_median = (num_1 + num_2) / 2;
     }
     else {
         int temp = (int)student.num_of_scores / 2;
-        student.score_median = student.scores[student.num_of_scores / 2];
+        student.score_median = student.scores[student.scores.size() / 2];
     }
 }
 
 
-void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option)
+void print_students(const std::vector<Student> &students, unsigned option)
 {
     std::cout << "\n" << std::setw(15) << std::left << "Pavardė" << std::setw(15) << std::left << "Vardas"
         << std::left << "Galutinis ";
@@ -259,17 +248,17 @@ void print_students(const std::array<Student, 10> &students, int num_of_students
     std::string temp(50, '-');
     cout << temp << endl;
 
-    for (int i{}; i < num_of_students; i++) {
-        std::cout << std::setw(15) << std::left << students[i].first_name;
-        std::cout << std::setw(15) << std::left << students[i].last_name;
+    for (const auto &student : students) {
+        std::cout << std::setw(15) << std::left << student.first_name;
+        std::cout << std::setw(15) << std::left << student.last_name;
         
         switch (option) {
             case 1:
-                std::cout << std::setprecision(2) << students[i].score_average << std::endl << std::endl;
+                std::cout << std::setprecision(2) << student.score_average << std::endl << std::endl;
                 break; 
 
             case 2:
-                std::cout << std::setprecision(2) << students[i].score_median << std::endl << std:: endl;
+                std::cout << std::setprecision(2) << student.score_median << std::endl << std:: endl;
                 break; 
         }
     }
