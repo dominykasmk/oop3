@@ -47,6 +47,7 @@ int main()
 
     cout << "Jeigu norite baigti įvestį, įveskite 'x'\n";
 
+
     while (true) {
 
         Student student;
@@ -186,7 +187,7 @@ void input_valid_string(std::string &input)
         if (input.empty()) {
             cout << "Nieko neįvedėte.\n";
             cin.clear();
-            ignore_line();
+            //ignore_line();
             continue;
         }
 
