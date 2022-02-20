@@ -103,16 +103,8 @@ int main()
                     calculate_averages(student);
                     break;
                 }
-                else {
                     
-                    student.scores.push_back(score);
-
-                    if (student.num_of_scores == 10) {
-                        calculate_averages(student);
-                        break;
-                    }
-                }
-
+                student.scores.push_back(score);
             }
         }
         
@@ -175,7 +167,7 @@ void input_valid_string(std::string &input)
         if (input.empty()) {
             cout << "Nieko neįvedėte.\n";
             cin.clear();
-            ignore_line();
+            //ignore_line();
             continue;
         }
 
