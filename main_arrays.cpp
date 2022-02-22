@@ -29,10 +29,7 @@ struct Student {
 
 
 bool validate_input(string input);
-template <typename T>
-T test_validation(T &input, std::string prompt, std::string error_msg);
 void input_valid_string(std::string &input, const string prompt);
-void input_valid_num(unsigned &input, unsigned left_range, unsigned right_range);
 void calculate_averages(Student &student);
 void ignore_line();
 int input_student(Student *student);
@@ -85,6 +82,8 @@ int main()
             ignore_line();
         }
     }
+
+    delete [] students;
 
     return 0;
 }
