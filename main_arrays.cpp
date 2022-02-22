@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <random>
 #include <chrono>
+#include <cstring>
 
 
 using std::cout;
@@ -35,16 +36,17 @@ void input_valid_string(std::string &input);
 void input_valid_num(int &input, int left_range, int right_range, int special_value = 0);
 void calculate_averages(Student &student);
 void ignore_line();
-void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option);
+void print_students(const Student *students, size_t student_amount, unsigned option);
 unsigned generate_random_score();
+void resize_array(Student **students, size_t &array_size);
 
 
 int main()
 {
-    constexpr unsigned max_num_of_students = 10;
-    unsigned num_of_students = 0;
-    array<Student, max_num_of_students> students;
 
+    size_t student_array_size = 5;
+    size_t student_amount = 0;
+    Student *students = new Student[student_array_size];
     cout << "Jeigu norite baigti įvestį, įveskite 'x'\n";
 
 
@@ -125,16 +127,14 @@ int main()
         cin.clear();
         ignore_line();
 
-
-        students[num_of_students++] = student;
-        if (num_of_students == 10) {
-            cout << "\nĮvestas maksimalus kiekis studentų.\n";
-            break;
+        if (student_amount + 1 > student_array_size) {
+            resize_array(&students, student_array_size);
         }
+        students[student_amount++] = student;
     }
 
 
-    if (num_of_students == 0) {
+    if (student_amount == 0) {
         cout << "\nNeįvedėte nei vieno studento.\n" << endl;
         return 0;
     }
@@ -142,7 +142,7 @@ int main()
     cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
     int option;
     input_valid_num(option, 1, 2);
-    print_students(students, num_of_students, option);
+    print_students(students, student_amount, option);
 
     return 0;
 }
@@ -151,6 +151,15 @@ int main()
 void ignore_line()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+
+void resize_array(Student **students, size_t &array_size)
+{
+    Student *new_array = new Student[array_size * 2];
+    memcpy(new_array, *students, array_size * sizeof(Student));
+    array_size *= 2;
+    *students = new_array;
 }
 
 //template <typename T>
@@ -255,7 +264,7 @@ void calculate_averages(Student &student)
 }
 
 
-void print_students(const std::array<Student, 10> &students, int num_of_students, unsigned option)
+void print_students(const Student *students, size_t student_amount, unsigned option)
 {
     std::cout << "\n" << std::setw(15) << std::left << "Pavardė" << std::setw(15) << std::left << "Vardas"
         << std::left << "Galutinis ";
@@ -265,9 +274,9 @@ void print_students(const std::array<Student, 10> &students, int num_of_students
     std::string temp(50, '-');
     cout << temp << endl;
 
-    for (int i{}; i < num_of_students; i++) {
-        std::cout << std::setw(15) << std::left << students[i].first_name;
+    for (int i{}; i < student_amount; i++) {
         std::cout << std::setw(15) << std::left << students[i].last_name;
+        std::cout << std::setw(15) << std::left << students[i].first_name;
         
         switch (option) {
             case 1:
