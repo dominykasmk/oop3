@@ -20,9 +20,9 @@ struct Student {
     string first_name;
     string last_name;
 
-    unsigned num_of_scores{};
-    static constexpr unsigned max_num_of_scores{10};
-    array<unsigned, max_num_of_scores> scores{};
+    unsigned scores_amount{};
+    unsigned scores_max_amount = 10;
+    unsigned *scores = new unsigned[scores_max_amount];
 
     double score_average{};
     double score_median{};
@@ -32,13 +32,14 @@ struct Student {
 bool validate_input(string input);
 template <typename T>
 T test_validation(T &input, std::string prompt, std::string error_msg);
-void input_valid_string(std::string &input);
-void input_valid_num(int &input, int left_range, int right_range, int special_value = 0);
+void input_valid_string(std::string &input, const string prompt);
+void input_valid_num(unsigned &input, unsigned left_range, unsigned right_range);
 void calculate_averages(Student &student);
 void ignore_line();
 void print_students(const Student *students, size_t student_amount, unsigned option);
 unsigned generate_random_score();
-void resize_array(Student **students, size_t &array_size);
+void resize_student_array(Student **students, size_t &array_size);
+void resize_score_array(unsigned **scores, unsigned &array_size);
 
 
 int main()
@@ -47,88 +48,98 @@ int main()
     size_t student_array_size = 5;
     size_t student_amount = 0;
     Student *students = new Student[student_array_size];
-    cout << "Jeigu norite baigti įvestį, įveskite 'x'\n";
+    cout << "\nJeigu norite baigti įvestį, įveskite 'x'\n";
 
 
     while (true) {
 
         Student student;
-        cout << "\nĮveskite studento vardą\n";
+        string prompt{"\nĮveskite studento vardą\n"};
         string input;
-        input_valid_string(input);
-        
+        input_valid_string(input, prompt);
         if (input == "x")
             break;
-
         student.first_name = input;
 
-        cout << "\nĮveskite studento pavardę\n";
-        input_valid_string(input);
+
+        prompt = "\nĮveskite studento pavardę\n";
+        input_valid_string(input, prompt);
+        if (input == "x")
+            break;
         student.last_name = input;
 
 
-        int max_num_of_scores = 10;
-        cout << "\nNorėtumėte sugeneruoti pažymius automatiškai?(1) ar ne?(2)\n";
-        int option;
-        input_valid_num(option, 1, 2);
+        unsigned max_scores_amount = 100;
+        prompt = "\nAr norėtumėte sugeneruoti pažymius atsitiktinai?(y/n)\n";
 
-        if (option == 1) {
-                
-            cout << "\nPasirinkite kiek pažymių sugeneruoti(1/10)\n";
-            int amount_to_generate{};
-            input_valid_num(amount_to_generate, 1, max_num_of_scores);
+            
+        while (true) {
+            
+            input_valid_string(input, prompt);
 
-            unsigned score;
-            cout << "\nSugeneruoti pažymiai: ";
-            for (int i{}; i < amount_to_generate; i++) {
+            if (input == "y" || input == "taip") {
                     
-                    score = generate_random_score();
-                    cout << score << " ";
-                    student.scores[student.num_of_scores++] = score;
+                cout << "\nPasirinkite kiek pažymių sugeneruoti(1/100)" << endl;
+                unsigned amount_to_generate{};
+                input_valid_num(amount_to_generate, 1, max_scores_amount);
+
+                unsigned score;
+                cout << "\nSugeneruoti pažymiai\n";
+                for (int i{}; i < amount_to_generate; i++) {
+                        
+                        student.scores[student.scores_amount++] = generate_random_score();
+                        cout << student.scores[student.scores_amount - 1] << " ";
+                        student.scores_amount % 10 == 0 ? cout << '\n' : cout << "";
+
+                        if (student.scores_amount > student.scores_max_amount) {
+                            resize_score_array(&student.scores, student.scores_max_amount);
+                        }
+                }
+                cout << endl;
+
+                break;
             }
-            cout << "\n";
-            calculate_averages(student);
-        }
-        else {
+            else if (input == "n" || input == "ne") {
 
-            int score;
-            cout << "\nVeskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
-                << "Įveskite -1 jei norite baigti įvedimą\n"
-                << "Pažymių kiekis neturi viršyti 10ies\n" << endl;
+                unsigned score;
+                cout << "\nVeskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
+                    << "Įveskite -1 jei norite baigti įvedimą\n"
+                    << "Pažymių kiekis neturi viršyti 10ies\n" << endl;
 
-            while (true) {
+                while (true) {
 
-                input_valid_num(score, 1, 10, -1);
+                    input_valid_num(score, 1, 10);
 
-                if (score == -1) {
+                    if (score == -1) {
 
-                    if (student.num_of_scores == 0) {
-                        student.scores[0] = 0;
+                        if (student.scores_amount == 0) {
+                            student.scores[0] = 0;
+                        }
+
                         break;
                     }
-
-                    // Suvedus visus pažymius suskaičiuojam vidurkį ir medianą
-                    calculate_averages(student);
-                    break;
-                }
-                else {
-                    
-                    student.scores[student.num_of_scores++] = score;
-
-                    if (student.num_of_scores == 10) {
-                        calculate_averages(student);
-                        break;
+                    else {
+                        
+                        student.scores[student.scores_amount++] = score;
+                        if (student.scores_amount > student.scores_max_amount) {
+                            resize_score_array(&student.scores, student.scores_max_amount);
+                        }
                     }
                 }
 
+                break;
+            }
+            else {
+                prompt = "\n'y' arba 'taip' jei norite generuoti atsitiktinai, 'ne' jei ne\n";
             }
         }
-        
         cin.clear();
         ignore_line();
 
+
+        calculate_averages(student);
         if (student_amount + 1 > student_array_size) {
-            resize_array(&students, student_array_size);
+            resize_student_array(&students, student_array_size);
         }
         students[student_amount++] = student;
     }
@@ -140,7 +151,7 @@ int main()
     }
 
     cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
-    int option;
+    unsigned option;
     input_valid_num(option, 1, 2);
     print_students(students, student_amount, option);
 
@@ -154,7 +165,7 @@ void ignore_line()
 }
 
 
-void resize_array(Student **students, size_t &array_size)
+void resize_student_array(Student **students, size_t &array_size)
 {
     Student *new_array = new Student[array_size * 2];
     memcpy(new_array, *students, array_size * sizeof(Student));
@@ -162,65 +173,43 @@ void resize_array(Student **students, size_t &array_size)
     *students = new_array;
 }
 
-//template <typename T>
-//T test_validation(T &input, std::string prompt, std::string error_msg)
-//{
-//    while (true) {
-//
-//        std::cout << prompt;
-//        std::cout << "> ";
-//        std::cin >> input;
-//
-//        if (cin.good()) {
-//            break;
-//        }
-//        else if (cin.fail()) {
-//
-//            std::cout << error_msg ;
-//            std::cin.clear();
-//            ignore_line();
-//        }
-//    }  
-//
-//    return input;
-//}
-
-
-void input_valid_string(std::string &input)
+void resize_score_array(unsigned **scores, unsigned &array_size)
 {
+
+    unsigned *new_array = new unsigned[array_size * 2];
+    memcpy(new_array, *scores, array_size * sizeof(unsigned));
+    array_size *= 2;
+    *scores = new_array;
+}
+
+void input_valid_string(std::string &input, const string prompt)
+{
+    cout << prompt;
     while (true) {
 
         cout << "> ";
-        getline(cin, input);
+        cin >> input;
 
-        if (input.empty()) {
-            cout << "Nieko neįvedėte.\n";
+        if (!cin) {
+            cout << prompt << endl;
             cin.clear();
-            //ignore_line();
-            continue;
+            ignore_line();
         }
-
-
-        bool valid_string = true;
-        for (decltype(input.size()) i{}; i != input.size() && valid_string; i++) {
-            if (!(std::isalnum(input[i])) || std::isspace(input[i])) {
-                valid_string = false;
-            }
+        else {
+            ignore_line();
+            break; 
         }
-
-        if (valid_string)
-            break;
     }
 }
 
-void input_valid_num(int &input, int left_range, int right_range, int special_value)
+void input_valid_num(unsigned &input, unsigned left_range, unsigned right_range)
 {
     do {
 
         cout << "> ";
         cin >> input;
 
-        if (cin.good() && special_value != 0 && input == special_value) {
+        if (cin.good()) {
             break;
         }
 
@@ -241,25 +230,25 @@ void input_valid_num(int &input, int left_range, int right_range, int special_va
 void calculate_averages(Student &student)
 {
     double average{};
-    for (int i{}; i < student.num_of_scores; i++) {
+    for (int i{}; i < student.scores_amount; i++) {
         average += student.scores[i];
     }
-    student.score_average = average / student.num_of_scores;
+    student.score_average = average / student.scores_amount;
 
     // Surikiuojam pažymius medianos apskaičiavimui
-    std::sort (student.scores.begin(), student.scores.begin() + student.num_of_scores);
+    std::sort (student.scores, student.scores + student.scores_amount);
 
     
-    if (student.num_of_scores % 2 == 0) {
-        int index2 = (int)student.num_of_scores / 2;
-        int index1 = (int)student.num_of_scores / 2 - 1;
+    if (student.scores_amount % 2 == 0) {
+        int index2 = (int)student.scores_amount / 2;
+        int index1 = (int)student.scores_amount / 2 - 1;
         double num_1 = student.scores[index1];
         double num_2 = student.scores[index2];
         student.score_median = (num_1 + num_2) / 2;
     }
     else {
-        int temp = (int)student.num_of_scores / 2;
-        student.score_median = student.scores[student.num_of_scores / 2];
+        int temp = (int)student.scores_amount / 2;
+        student.score_median = student.scores[student.scores_amount / 2];
     }
 }
 
