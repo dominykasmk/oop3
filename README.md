@@ -7,5 +7,5 @@ Suvedus duomenis yra galimybė atspausdinti sąrašą studentų ir apskaičiuoti
 
  - `git clone https://github.com/dominykasmk/oop-test.git`
  - `cd oop-test`
- - `g++ main_arrays.cpp -o main_arrays` arba `g++ main_vectors.cpp -o main_vectors`
- - `./main_arrays` arba `./main_vectors`
+ - `g++ main.cpp students.cpp -o main`
+ - `./main`
