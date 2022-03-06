@@ -174,3 +174,13 @@ unsigned generate_random_score()
     
     return dist(mt);
 }
+
+bool compare(Student a, Student b)
+{
+    return a.last_name < b.last_name;
+}
+
+void sort_students(std::vector<Student> &students)
+{
+    sort(students.begin(), students.end(), compare);
+}

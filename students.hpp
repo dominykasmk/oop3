@@ -42,5 +42,7 @@ void ignore_line();
 int input_student(Student *student);
 void print_students(const std::vector<Student> &students, unsigned option);
 unsigned generate_random_score();
+bool compare(Student a, Student b);
+void sort_students(std::vector<Student> &students);
 
 #endif

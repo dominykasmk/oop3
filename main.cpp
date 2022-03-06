@@ -56,6 +56,7 @@ int main()
                     cout << "> ";
                     cin >> option;
                     if (cin && (option == 1 || option == 2)) {
+                        sort_students(students);
                         print_students(students, option);
                         break;
                     }
