@@ -2,6 +2,8 @@
 #define STUDENTS_HPP
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <limits>
 #include <iomanip>
@@ -18,6 +20,8 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::ifstream;
+using std::istringstream;
 
 
 struct Student {
