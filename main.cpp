@@ -26,50 +26,58 @@ int main()
     switch (option) {
         case 1: {
 
-            ifstream student_file("kursiokai.txt"); 
+            ifstream student_file;
             vector<Student> students;
-            if (student_file.is_open()) {
-                string line;
 
-                getline(student_file, line);
-                while (getline(student_file, line)) {
+            student_file.exceptions( ifstream::badbit );
+            try {
+                student_file.open("kursiokai.txt");
 
-                        istringstream iss(line);
-                        Student student;
-                        
-                        iss >> student.last_name;
-                        iss >> student.first_name;
+                if (student_file.is_open()) {
+                    string line;
 
-                        unsigned score;
-                        while (iss >> score) {
-                            student.scores.push_back(score);
+                    getline(student_file, line);
+                    while (getline(student_file, line)) {
+
+                            istringstream iss(line);
+                            Student student;
+                            
+                            iss >> student.last_name;
+                            iss >> student.first_name;
+
+                            unsigned score;
+                            while (iss >> score) {
+                                student.scores.push_back(score);
+                            }
+
+                            calculate_averages(student);
+                            students.push_back(student);
+                    }
+                    
+                    cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
+                    unsigned option;
+                    while (true) {
+
+                        cout << "> ";
+                        cin >> option;
+                        if (cin && (option == 1 || option == 2)) {
+                            sort_students(students);
+                            print_students(students, option);
+                            break;
                         }
-
-                        calculate_averages(student);
-                        students.push_back(student);
-                }
-                
-                cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
-                unsigned option;
-                while (true) {
-
-                    cout << "> ";
-                    cin >> option;
-                    if (cin && (option == 1 || option == 2)) {
-                        sort_students(students);
-                        print_students(students, option);
-                        break;
-                    }
-                    else {
-                        cout << "Įveskite 1 arba 2\n";
-                        cin.clear();
-                        ignore_line();
+                        else {
+                            cout << "Įveskite 1 arba 2\n";
+                            cin.clear();
+                            ignore_line();
+                        }
                     }
                 }
             }
-            else {
-
+            catch (const ifstream::failure e) {
+                cout << "Klaida atidarinėjant failą\n" << endl;
+                return 1;
             }
+            student_file.close();
 
             break;
         }
