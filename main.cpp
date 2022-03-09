@@ -73,7 +73,7 @@ int main()
                     }
                 }
             }
-            catch (const ifstream::failure e) {
+            catch (const ifstream::failure& e) {
                 cout << "Klaida atidarinėjant failą\n" << endl;
                 return 1;
             }
