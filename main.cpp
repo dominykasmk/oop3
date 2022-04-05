@@ -139,18 +139,33 @@ int main()
                 
                 unsigned student_amount = 100;
                 unsigned scores_amount = 20;
-                string file_name("studentai");
+                string temp_file_name("studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
+                    const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
 
                     auto start = std::chrono::high_resolution_clock::now();
-                    create_student_file(file_name + std::to_string(student_amount) + ".txt", student_amount, scores_amount);
+                    create_student_file(file_name, student_amount, scores_amount);
                     auto time = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double> diff = time - start;
                     auto stop = time;
 
                     cout << student_amount << "ies studentų failą sukurti užtruko: " << diff.count() << "s\n";
+
+
+                    start = std::chrono::high_resolution_clock::now();
+
+                    ifstream student_file;
+                    vector<Student> students;
+
+                    read_student_file(students, file_name);
+                    time = std::chrono::high_resolution_clock::now();
+                    diff = time - start;
+                    stop = time;
+
+                    cout << student_amount << "ies studentu failo nuskaitymas užtruko: "<< diff.count() << "s\n";
+
                 }
 
                 break;
