@@ -180,7 +180,155 @@ bool compare(Student a, Student b)
     return a.last_name < b.last_name;
 }
 
+bool compare_by_final_score(Student a, Student b)
+{
+    return a.score_average < b.score_average;
+}
+
 void sort_students(std::vector<Student> &students)
 {
     sort(students.begin(), students.end(), compare);
+}
+
+
+void create_student_file(const std::string file_name, const unsigned student_amount, const unsigned scores_amount)
+{
+    vector<Student> students_auto;
+    
+    for (int i{}; i < student_amount; i++) {
+        Student student;
+
+        student.first_name = "Vardas" + std::to_string(i + 1);
+        student.last_name = "Pavarde" + std::to_string(i + 1);
+
+        for (int i{}; i < scores_amount; i++) {
+            student.scores.push_back(generate_random_score());
+        }
+
+        calculate_averages(student);
+        students_auto.push_back(student);
+    }
+
+    std::ofstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            
+            std::ostringstream ss;
+            ss << std::setw(15) << std::left << "Pavarde"
+                << std::setw(15) << std::left << "Vardas";
+
+            for (int i{}; i < students_auto[0].scores.size() - 1; i++) {
+                ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+            }
+            ss << std::setw(15) << std::left << "Egzaminas";
+            ss << std::setw(15) << std::left << "Galutinis";
+            ss << "\n";
+            student_file << ss.str();
+
+            for (auto &student : students_auto) {
+                std::ostringstream ss;
+                ss << std::setw(15) << std::left << student.last_name;
+                ss << std::setw(15) << std::left << student.first_name;
+
+                for (auto &score : student.scores) {
+                    ss << std::setw(15) << std::left << score;
+                }
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.score_average;
+                ss << "\n"; 
+                student_file << ss.str();
+            }
+
+            student_file.close();
+        }
+    }
+    catch (string e) {
+        std::cerr << "\nKlaida kuriant failą\n";
+    }
+}
+
+void write_student_file(const std::vector<Student> &students, const std::string file_name)
+{
+    std::ofstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            
+            std::ostringstream ss;
+            ss << std::setw(15) << std::left << "Pavarde"
+                << std::setw(15) << std::left << "Vardas";
+
+            for (int i{}; i < students[0].scores.size() - 1; i++) {
+                ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+            }
+            ss << std::setw(15) << std::left << "Egzaminas";
+            ss << std::setw(15) << std::left << "Galutinis";
+            ss << "\n";
+            student_file << ss.str();
+
+            for (auto &student : students) {
+                std::ostringstream ss;
+                ss << std::setw(15) << std::left << student.last_name;
+                ss << std::setw(15) << std::left << student.first_name;
+
+                for (auto &score : student.scores) {
+                    ss << std::setw(15) << std::left << score;
+                }
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.score_average;
+                ss << "\n"; 
+                student_file << ss.str();
+            }
+
+            student_file.close();
+        }
+    }
+    catch (string e) {
+        std::cerr << "\nKlaida kuriant failą\n";
+    }
+}
+
+void read_student_file(std::vector<Student> &students, const std::string file_name)
+{
+    ifstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            string line;
+
+            getline(student_file, line);
+            while (getline(student_file, line)) {
+
+                    istringstream iss(line);
+                    Student student;
+                    
+                    iss >> student.last_name;
+                    iss >> student.first_name;
+
+                    unsigned score;
+                    while (iss >> score) {
+                        student.scores.push_back(score);
+                    }
+
+                    calculate_averages(student);
+                    students.push_back(student);
+            }
+        }
+
+        student_file.close();
+    }
+    catch (string e) {
+        cout << "\nKlaida atidarinėjant failą\n" << endl;
+    }
 }

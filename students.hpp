@@ -43,6 +43,10 @@ int input_student(Student *student);
 void print_students(const std::vector<Student> &students, unsigned option);
 unsigned generate_random_score();
 bool compare(Student a, Student b);
+bool compare_by_final_score(Student a, Student b);
 void sort_students(std::vector<Student> &students);
+void create_student_file(const std::string file_name, const unsigned student_amount, const unsigned scores_amount);
+void read_student_file(std::vector<Student> &students, const std::string file_name);
+void write_student_file(const std::vector<Student> &students, const std::string file_name);
 
 #endif
