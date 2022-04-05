@@ -37,6 +37,8 @@ void calculate_averages(Student &student)
         average += score;
     }
     student.score_average = average / student.scores.size();
+    double temp = 0.4 * student.score_average + 0.6 * student.test_score;
+    student.final_score_avg = round(temp * 100) / 100;
 
     // Surikiuojam pažymius medianos apskaičiavimui
     std::sort (student.scores.begin(), student.scores.begin() + student.scores.size());
@@ -48,6 +50,8 @@ void calculate_averages(Student &student)
             return;
     }
     student.score_median = student.scores[student.scores.size() / 2];
+    temp = 0.4 * student.score_median + 0.6 * student.test_score;
+    student.final_score_med = round(temp * 100) / 100;
 }
 
 int input_student(Student *student)
@@ -92,6 +96,10 @@ int input_student(Student *student)
                             cout << student->scores.back() << " ";
                             student->scores.size() % 10 == 0 ? cout << '\n' : cout << "";
                     }
+
+                    student->test_score = student->scores.back();
+                    student->scores.pop_back();
+
                     cout << endl;
                     break;
                 }
@@ -120,7 +128,11 @@ int input_student(Student *student)
                 }
                 else {
                     if (score == -1)
+                    {
+                        student->test_score = student->scores.back();
+                        student->scores.pop_back();
                         break;
+                    }
 
                     cout << "\nĮveskite skaičių tarp 1 ir 10\n";
                     cin.clear();
@@ -156,11 +168,12 @@ void print_students(const std::vector<Student> &students, unsigned option)
         
         switch (option) {
             case 1:
-                std::cout << std::setprecision(2) << student.score_average << std::endl << std::endl;
+                std::cout << std::setprecision(2) << student.final_score_avg << std::endl << std::endl;
                 break; 
 
             case 2:
-                std::cout << std::setprecision(2) << student.score_median << std::endl << std:: endl;
+                std::cout << std::setprecision(2) << student.final_score_med << std::endl << std:: endl
+                    << std::endl << std:: endl;
                 break; 
         }
     }
@@ -180,7 +193,162 @@ bool compare(Student a, Student b)
     return a.last_name < b.last_name;
 }
 
+bool compare_by_final_score(Student a, Student b)
+{
+    return a.final_score_avg < b.final_score_avg;
+}
+
 void sort_students(std::vector<Student> &students)
 {
     sort(students.begin(), students.end(), compare);
+}
+
+
+void create_student_file(const std::string file_name, const unsigned student_amount, const unsigned scores_amount)
+{
+    vector<Student> students_auto;
+    
+    for (int i{}; i < student_amount; i++) {
+        Student student;
+
+        student.first_name = "Vardas" + std::to_string(i + 1);
+        student.last_name = "Pavarde" + std::to_string(i + 1);
+
+        for (int i{}; i < scores_amount - 1; i++) {
+            student.scores.push_back(generate_random_score());
+        }
+        student.test_score = generate_random_score();
+
+        calculate_averages(student);
+        students_auto.push_back(student);
+    }
+
+    std::ofstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            
+            std::ostringstream ss;
+            ss << std::setw(15) << std::left << "Pavarde"
+                << std::setw(15) << std::left << "Vardas";
+
+            for (int i{}; i < students_auto[0].scores.size() - 1; i++) {
+                ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+            }
+            ss << std::setw(15) << std::left << "Egzaminas";
+            ss << std::setw(15) << std::left << "Galutinis";
+            ss << "\n";
+            student_file << ss.str();
+
+            for (auto &student : students_auto) {
+                std::ostringstream ss;
+                ss << std::setw(15) << std::left << student.last_name;
+                ss << std::setw(15) << std::left << student.first_name;
+
+                for (auto &score : student.scores) {
+                    ss << std::setw(15) << std::left << score;
+                }
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.test_score;
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.final_score_avg;
+                ss << "\n"; 
+                student_file << ss.str();
+            }
+
+            student_file.close();
+        }
+    }
+    catch (string e) {
+        std::cerr << "\nKlaida kuriant failą\n";
+    }
+}
+
+void write_student_file(const std::vector<Student> &students, const std::string file_name)
+{
+    std::ofstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            
+            std::ostringstream ss;
+            ss << std::setw(15) << std::left << "Pavarde"
+                << std::setw(15) << std::left << "Vardas";
+
+            for (int i{}; i < students[0].scores.size() - 1; i++) {
+                ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+            }
+            ss << std::setw(15) << std::left << "Egzaminas";
+            ss << std::setw(15) << std::left << "Galutinis";
+            ss << "\n";
+            student_file << ss.str();
+
+            for (auto &student : students) {
+                std::ostringstream ss;
+                ss << std::setw(15) << std::left << student.last_name;
+                ss << std::setw(15) << std::left << student.first_name;
+
+                for (auto &score : student.scores) {
+                    ss << std::setw(15) << std::left << score;
+                }
+                ss << std::setw(15) << std::left << std::setprecision(4) << student.final_score_avg;
+                ss << "\n"; 
+                student_file << ss.str();
+            }
+
+            student_file.close();
+        }
+    }
+    catch (string e) {
+        std::cerr << "\nKlaida kuriant failą\n";
+    }
+}
+
+void read_student_file(std::vector<Student> &students, const std::string file_name)
+{
+    ifstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            string line;
+
+            getline(student_file, line);
+            while (getline(student_file, line)) {
+
+                    istringstream iss(line);
+                    Student student;
+                    
+                    iss >> student.last_name;
+                    iss >> student.first_name;
+
+                    double score;
+                    while (iss >> score) {
+                        student.scores.push_back(score);
+                    }
+                    student.final_score_avg = student.scores.back();
+                    student.scores.pop_back();
+
+                    student.test_score = student.scores.back();
+                    student.scores.pop_back();
+
+                    calculate_averages(student);
+                    students.push_back(student);
+            }
+        }
+
+        student_file.close();
+    }
+    catch (string e) {
+        cout << "\nKlaida atidarinėjant failą\n" << endl;
+    }
 }
