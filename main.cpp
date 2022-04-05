@@ -111,7 +111,7 @@ int main()
 
                     for (; it != end; it++) {
                         
-                        if ((*it).score_average >= 5) {
+                        if ((*it).final_score_avg >= 5) {
                             break;
                         }
 

@@ -29,9 +29,13 @@ struct Student {
     string last_name;
 
     vector<unsigned> scores;
+    unsigned test_score{};
 
     double score_average{};
     double score_median{};
+
+    double final_score_avg{};
+    double final_score_med{};
 };
 
 

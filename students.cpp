@@ -37,6 +37,8 @@ void calculate_averages(Student &student)
         average += score;
     }
     student.score_average = average / student.scores.size();
+    double temp = 0.4 * student.score_average + 0.6 * student.test_score;
+    student.final_score_avg = round(temp * 100) / 100;
 
     // Surikiuojam pažymius medianos apskaičiavimui
     std::sort (student.scores.begin(), student.scores.begin() + student.scores.size());
@@ -48,6 +50,8 @@ void calculate_averages(Student &student)
             return;
     }
     student.score_median = student.scores[student.scores.size() / 2];
+    temp = 0.4 * student.score_median + 0.6 * student.test_score;
+    student.final_score_med = round(temp * 100) / 100;
 }
 
 int input_student(Student *student)
@@ -92,6 +96,10 @@ int input_student(Student *student)
                             cout << student->scores.back() << " ";
                             student->scores.size() % 10 == 0 ? cout << '\n' : cout << "";
                     }
+
+                    student->test_score = student->scores.back();
+                    student->scores.pop_back();
+
                     cout << endl;
                     break;
                 }
@@ -120,7 +128,11 @@ int input_student(Student *student)
                 }
                 else {
                     if (score == -1)
+                    {
+                        student->test_score = student->scores.back();
+                        student->scores.pop_back();
                         break;
+                    }
 
                     cout << "\nĮveskite skaičių tarp 1 ir 10\n";
                     cin.clear();
@@ -156,11 +168,12 @@ void print_students(const std::vector<Student> &students, unsigned option)
         
         switch (option) {
             case 1:
-                std::cout << std::setprecision(2) << student.score_average << std::endl << std::endl;
+                std::cout << std::setprecision(2) << student.final_score_avg << std::endl << std::endl;
                 break; 
 
             case 2:
-                std::cout << std::setprecision(2) << student.score_median << std::endl << std:: endl;
+                std::cout << std::setprecision(2) << student.final_score_med << std::endl << std:: endl
+                    << std::endl << std:: endl;
                 break; 
         }
     }
@@ -182,7 +195,7 @@ bool compare(Student a, Student b)
 
 bool compare_by_final_score(Student a, Student b)
 {
-    return a.score_average < b.score_average;
+    return a.final_score_avg < b.final_score_avg;
 }
 
 void sort_students(std::vector<Student> &students)
@@ -201,9 +214,10 @@ void create_student_file(const std::string file_name, const unsigned student_amo
         student.first_name = "Vardas" + std::to_string(i + 1);
         student.last_name = "Pavarde" + std::to_string(i + 1);
 
-        for (int i{}; i < scores_amount; i++) {
+        for (int i{}; i < scores_amount - 1; i++) {
             student.scores.push_back(generate_random_score());
         }
+        student.test_score = generate_random_score();
 
         calculate_averages(student);
         students_auto.push_back(student);
@@ -238,7 +252,8 @@ void create_student_file(const std::string file_name, const unsigned student_amo
                 for (auto &score : student.scores) {
                     ss << std::setw(15) << std::left << score;
                 }
-                ss << std::setw(15) << std::left << std::setprecision(2) << student.score_average;
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.test_score;
+                ss << std::setw(15) << std::left << std::setprecision(2) << student.final_score_avg;
                 ss << "\n"; 
                 student_file << ss.str();
             }
@@ -282,7 +297,7 @@ void write_student_file(const std::vector<Student> &students, const std::string 
                 for (auto &score : student.scores) {
                     ss << std::setw(15) << std::left << score;
                 }
-                ss << std::setw(15) << std::left << std::setprecision(2) << student.score_average;
+                ss << std::setw(15) << std::left << std::setprecision(4) << student.final_score_avg;
                 ss << "\n"; 
                 student_file << ss.str();
             }
@@ -316,10 +331,15 @@ void read_student_file(std::vector<Student> &students, const std::string file_na
                     iss >> student.last_name;
                     iss >> student.first_name;
 
-                    unsigned score;
+                    double score;
                     while (iss >> score) {
                         student.scores.push_back(score);
                     }
+                    student.final_score_avg = student.scores.back();
+                    student.scores.pop_back();
+
+                    student.test_score = student.scores.back();
+                    student.scores.pop_back();
 
                     calculate_averages(student);
                     students.push_back(student);
