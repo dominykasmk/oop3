@@ -9,13 +9,14 @@ int main()
         cout << "\nPasirinkite\n"
             << "0 - baigti programą\n"
             << "1 - Nuskaityti studentų duomenis iš failo\n"
-            << "2 - Įvesti studentų duomenis ranka\n" << endl;
+            << "2 - Įvesti studentų duomenis ranka\n"
+            << "3 - Sugeneruoti 5 studentų sąraštus automatiškai\n"<< endl;
 
         while (true) {
             cout << "> ";
             cin >> option;
 
-            if (cin && (option == 0 || option == 1 || option == 2)) {
+            if (cin && (option == 0 || option == 1 || option == 2 || option == 3)) {
                 break;         
             }
             else {
@@ -131,6 +132,79 @@ int main()
                     }
                 }
 
+                break;
+            }
+
+            case 3: {
+                
+                unsigned student_amount = 100;
+                unsigned scores_amount = 20;
+                for (int i{}; i < 1; i++) {
+                    
+                    student_amount *= 10;
+
+                    vector<Student> students_auto;
+                    
+                    // creating
+                    for (int i{}; i < student_amount; i++) {
+                        Student student;
+
+                        student.first_name = "Vardas" + std::to_string(i + 1);
+                        student.last_name = "Pavarde" + std::to_string(i + 1);
+
+                        for (int i{}; i < scores_amount; i++) {
+                            student.scores.push_back(generate_random_score());
+                        }
+
+                        calculate_averages(student);
+                        students_auto.push_back(student);
+                    }
+
+
+
+                    const string file_name("temp.txt");
+                    std::ofstream student_file;
+
+                    try {
+                        student_file.open(file_name);
+
+                        if (student_file.fail())
+                            throw file_name;
+
+                        else if (student_file.is_open()) {
+                            
+                            std::ostringstream ss;
+                            ss << std::setw(15) << std::left << "Pavarde"
+                                << std::setw(15) << std::left << "Vardas";
+
+                            for (int i{}; i < students_auto[0].scores.size() - 1; i++) {
+                                ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+                            }
+                            ss << std::setw(15) << std::left << "Egzaminas";
+                            ss << std::setw(15) << std::left << "Galutinis";
+                            ss << "\n";
+                            student_file << ss.str();
+
+                            for (auto &student : students_auto) {
+                                std::ostringstream ss;
+                                ss << std::setw(15) << std::left << student.last_name;
+                                ss << std::setw(15) << std::left << student.first_name;
+
+                                for (auto &score : student.scores) {
+                                    ss << std::setw(15) << std::left << score;
+                                }
+                                ss << std::setw(15) << std::left << std::setprecision(2) << student.score_average;
+                                ss << "\n"; 
+                                student_file << ss.str();
+                            }
+
+                            student_file.close();
+                        }
+                    }
+                    catch (string e) {
+                        std::cerr << "\nKlaida kuriant failą\n";
+                    }
+                }
                 break;
             }
 
