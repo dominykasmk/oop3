@@ -13,6 +13,8 @@
 #include <chrono>
 #include <cstring>
 #include <vector>
+#include <list>
+#include <deque>
 
 
 using std::cout;
@@ -50,7 +52,9 @@ bool compare(Student a, Student b);
 bool compare_by_final_score(Student a, Student b);
 void sort_students(std::vector<Student> &students);
 void create_student_file(const std::string file_name, const unsigned student_amount, const unsigned scores_amount);
-void read_student_file(std::vector<Student> &students, const std::string file_name);
+void read_student_vector(std::vector<Student> &students, const std::string file_name);
+void read_student_list(std::list<Student> &students, const std::string file_name);
+void read_student_deque(std::deque<Student> &students, const std::string file_name);
 void write_student_file(const std::vector<Student> &students, const std::string file_name);
 
 #endif
