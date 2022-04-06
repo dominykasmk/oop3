@@ -108,11 +108,11 @@ int main()
 
                     //reading
                     ifstream student_file;
-                    vector<Student> students;
+                    vector<Student> student_vector;
 
                     auto start = std::chrono::high_resolution_clock::now();
 
-                    read_student_vector(students, file_name);
+                    read_student_vector(student_vector, file_name);
 
                     auto time = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double> diff = time - start;
@@ -121,13 +121,13 @@ int main()
                     cout << endl << student_amount << "ies studentu vektoriaus nuskaitymas užtruko: "<< diff.count() << "s\n";
 
                     // sorting
-                    std::sort(students.begin(), students.end(), compare_by_final_score);
+                    std::sort(student_vector.begin(), student_vector.end(), compare_by_final_score);
                     
                     vector<Student> students_low;
                     vector<Student> students_high;
 
-                    auto it = students.begin();
-                    auto end = students.end();
+                    auto it = student_vector.begin();
+                    auto end = student_vector.end();
 
                     for (; it != end; it++) {
                         
@@ -142,13 +142,16 @@ int main()
                         
                         students_high.push_back(*it);
                     }
-                    students.clear();
 
                     time = std::chrono::high_resolution_clock::now();
                     diff = time - stop;
                     stop = time;
 
                     cout << student_amount << "ies studentu vektoriaus rūšiavimas į dvi grupes užtruko: "<< diff.count() << "s\n";
+
+                    student_vector.clear();
+                    students_low.clear();
+                    students_high.clear();
                 }
 
                 break;
@@ -254,6 +257,10 @@ int main()
                     stop = time;
 
                     cout << student_amount << "ies studentu deko rūšiavimas į dvi grupes užtruko: "<< diff.count() << "s\n";
+
+                    student_deque.clear();
+                    students_low.clear();
+                    students_high.clear();
                 }
 
                 break;
