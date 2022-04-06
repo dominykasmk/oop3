@@ -1,4 +1,4 @@
-# Versija 0.4
+# Versija 0.5
 
 Ši programa paprašo naudotojo įvesti kokį nori kiekį studentų ir duomenų apie juos (vardai, pavardės, namų darbų pažymiai, egzaminų pažymiai).
 Suvedus duomenis yra galimybė atspausdinti sąrašą studentų ir apskaičiuoti jų pažymių vidurkius ir medianas.
@@ -24,7 +24,13 @@ Taip pat yra galimybė studentus nuskaityti iš failo.
  - Pridėtas exception'ų checkinimas atidarinėjant failą
  - Kodas jau buvo splittintas į headerį, metodų source'ą ir main source failą
  - Kode jau buvo naudojamos struktūros
-## [v0.4](https://github.com/dominykasmk/oop2/tree/v0.4) (01/04/2021)
+## [v0.4](https://github.com/dominykasmk/oop2/tree/v0.4) (05/04/2021)
  - Pridėjau galimybę sugeneruoti studentų failus automatiškai
  - Programa sugeneruoja 5 studentų failus, surušiuoja pagal pažymius ir pagal tai įšveda į du skirtingus failus
  - Visi testai matuojami ir yra išvedama kiek kas laiko užėmė
+## [v0.5](https://github.com/dominykasmk/oop2/tree/v0.5) (06/04/2021)
+ - Implementuotas testas tikrinantis duomenų nuskaitymą iš failų ir rūšiavimą į dvi kategorijas naudojant vektorių, listą ir deką
+
+![](vector.png)
+![](list.png)
+![](deque.png)
