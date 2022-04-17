@@ -1,4 +1,4 @@
-#include "../headers/students.hpp"
+#include "headers/students.hpp"
 
 
 int main()
