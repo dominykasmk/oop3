@@ -58,7 +58,7 @@ int main()
             case 11: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("../studentai");
+                string temp_file_name("studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
@@ -122,7 +122,7 @@ int main()
             case 12: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("../studentai");
+                string temp_file_name("studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
@@ -186,7 +186,7 @@ int main()
             case 13: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("../studentai");
+                string temp_file_name("studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
