@@ -1,8 +1,6 @@
 # Versija 1.0
 
-Ši programa paprašo naudotojo įvesti kokį nori kiekį studentų ir duomenų apie juos (vardai, pavardės, namų darbų pažymiai, egzaminų pažymiai).
-Suvedus duomenis yra galimybė atspausdinti sąrašą studentų ir apskaičiuoti jų pažymių vidurkius ir medianas.
-Taip pat yra galimybė studentus nuskaityti iš failo.
+Ši programos versija leidžia pamatyti kaip skiriasi konteinerių rūšiavimas ir grupavimas į du skirtingus konteinerius naudojant arba vieną naują arba du naujus konteinerius
 
 ## Kaip parunnint
 
