@@ -22,6 +22,8 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::list;
+using std::deque;
 using std::ifstream;
 using std::istringstream;
 
