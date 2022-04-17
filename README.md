@@ -1,4 +1,4 @@
-# Versija 0.5
+# Versija 1.0
 
 Ši programa paprašo naudotojo įvesti kokį nori kiekį studentų ir duomenų apie juos (vardai, pavardės, namų darbų pažymiai, egzaminų pažymiai).
 Suvedus duomenis yra galimybė atspausdinti sąrašą studentų ir apskaičiuoti jų pažymių vidurkius ir medianas.
@@ -8,7 +8,8 @@ Taip pat yra galimybė studentus nuskaityti iš failo.
 
  - `git clone https://github.com/dominykasmk/oop2.git`
  - `cd oop-test`
- - `g++ main.cpp students.cpp -o main`
+ - `cmake -S . -B out/`
+ - `cd out/ && make`
  - `./main`
 
 ## Changelog
@@ -34,3 +35,6 @@ Taip pat yra galimybė studentus nuskaityti iš failo.
 ![](vector.png)
 ![](list.png)
 ![](deque.png)
+
+## [v1.0](https://github.com/dominykasmk/oop2/tree/v1.0) (17/04/2021)
+ - Ši versija matuoja kaip skiriasi studentų rušiavimas į dvi grupes naudojant vieną naują/du naujus konteinerius naudojant vektorių, list'ą arba dek'ą
