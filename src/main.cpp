@@ -1,4 +1,4 @@
-#include "students.hpp"
+#include "../headers/students.hpp"
 
 
 int main()
@@ -58,7 +58,7 @@ int main()
             case 11: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("studentai");
+                string temp_file_name("../studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
@@ -88,8 +88,6 @@ int main()
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
                         cout << "rūšiavimas naudojant du naujus konteinerius užtruko: "<< diff.count() << "s\n";
-                        write_student_file(students_high, "kietekai" + std::to_string(student_amount) + ".txt");
-                        write_student_file(students_low, "vargsiukai" + std::to_string(student_amount) + ".txt");
                     }
 
                     {
@@ -124,7 +122,7 @@ int main()
             case 12: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("studentai");
+                string temp_file_name("../studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
@@ -188,7 +186,7 @@ int main()
             case 13: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("studentai");
+                string temp_file_name("../studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
