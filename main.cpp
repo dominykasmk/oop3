@@ -63,40 +63,61 @@ int main()
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
+                    cout << endl << student_amount << " studentų\n";
+                    {
+                        vector<Student> students;
+                        read_student_vector(students, file_name);
 
-                    vector<Student> students;
-                    read_student_vector(students, file_name);
-                    vector<Student> students_high(students);
+                        auto start = std::chrono::high_resolution_clock::now();
+                        std::sort(students.begin(), students.end(), compare_by_final_score);
+                        
+                        vector<Student> students_low;
+                        vector<Student> students_high;
 
+                        auto it = students.begin();
+                        auto end = students.end();
+                        while (it != end) {
+                            if ((*it).final_score_avg < 5)
+                                students_low.push_back(*it);
+                            else
+                                students_high.push_back(*it);
 
-                    auto start = std::chrono::high_resolution_clock::now();
-                    std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
-                    vector<Student> students_low;
+                            ++it;
+                        }
 
-                    auto it = students_high.begin();
-                    auto end = students_high.end();
-
-                    for (; it != end; ++it) {
-                        if ((*it).final_score_avg >= 5)
-                            break;
-
-                        students_low.push_back(*it);
+                        auto time = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double> diff = time - start;
+                        cout << "rūšiavimas naudojant du naujus konteinerius užtruko: "<< diff.count() << "s\n";
+                        write_student_file(students_high, "kietekai" + std::to_string(student_amount) + ".txt");
+                        write_student_file(students_low, "vargsiukai" + std::to_string(student_amount) + ".txt");
                     }
-                    students_high.erase(students_high.begin(), it);
 
-                    auto time = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> diff = time - start;
-                    auto stop = time;
+                    {
+                        vector<Student> students_high;
+                        read_student_vector(students_high, file_name);
+                        auto start = std::chrono::high_resolution_clock::now();
+                        std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
+                        vector<Student> students_low;
 
-                    cout << endl << student_amount << "ies studentų rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
+                        auto it = students_high.begin();
+                        auto end = students_high.end();
 
-                    write_student_file(students_high, "kietekai" + std::to_string(student_amount) + ".txt");
-                    write_student_file(students_low, "vargsiukai" + std::to_string(student_amount) + ".txt");
+                        for (; it != end; ++it) {
+                            if ((*it).final_score_avg >= 5)
+                                break;
 
-                    students_high.clear();
-                    students_low.clear();
+                            students_low.push_back(*it);
+                        }
+                        students_high.erase(students_high.begin(), it);
+
+                        auto time = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double> diff = time - start;
+                        auto stop = time;
+
+                        cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
+
+                    }
                 }
-
                 break;
             }
 
