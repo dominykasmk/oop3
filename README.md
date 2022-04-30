@@ -40,14 +40,17 @@
  - Pereita prie klasių vietoj struktūrų
  - Palyginau programos veikimo spartą naudojant struktūras ir klases ir runninant testus su vektoriais ir 100000 ir 1000000 studentų failais
 
-Struktūros
+### Struktūros
 ![](struct.png)
 
-Klasės
+### Klasės
 ![](class.png)
 
  - Palyginau testų spartą naudojant O1, O2 ir O3 kompiliatoriaus optimizavimo flagus
  
+### OP1
 ![](OP1.png)
+### OP2
 ![](OP2.png)
+### OP3
 ![](OP3.png)
