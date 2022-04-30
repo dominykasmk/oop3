@@ -57,39 +57,13 @@ int main()
 
             case 11: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
                     cout << endl << student_amount << " studentų\n";
-                    {
-                        vector<Student> students;
-                        read_student_vector(students, file_name);
-
-                        auto start = std::chrono::high_resolution_clock::now();
-                        std::sort(students.begin(), students.end(), compare_by_final_score);
-                        
-                        vector<Student> students_low;
-                        vector<Student> students_high;
-
-                        auto it = students.begin();
-                        auto end = students.end();
-                        while (it != end) {
-                            if ((*it).get_final_score() < 5)
-                                students_low.push_back(*it);
-                            else
-                                students_high.push_back(*it);
-
-                            ++it;
-                        }
-
-                        auto time = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = time - start;
-                        cout << "rūšiavimas naudojant du naujus konteinerius užtruko: "<< diff.count() << "s\n";
-                    }
-
                     {
                         vector<Student> students_high;
                         read_student_vector(students_high, file_name);
@@ -110,7 +84,6 @@ int main()
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-                        auto stop = time;
 
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
 
@@ -121,39 +94,13 @@ int main()
 
             case 12: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
                     cout << endl << student_amount << " studentų\n";
-                    {
-                        list<Student> students;
-                        read_student_list(students, file_name);
-
-                        auto start = std::chrono::high_resolution_clock::now();
-                        students.sort(compare_by_final_score);
-                        
-                        list<Student> students_low;
-                        list<Student> students_high;
-
-                        auto it = students.begin();
-                        auto end = students.end();
-                        while (it != end) {
-                            if ((*it).get_final_score() < 5)
-                                students_low.push_back(*it);
-                            else
-                                students_high.push_back(*it);
-
-                            ++it;
-                        }
-
-                        auto time = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = time - start;
-                        cout << "rūšiavimas naudojant du naujus konteinerius užtruko: "<< diff.count() << "s\n";
-                    }
-
                     {
                         list<Student> students_high;
                         read_student_list(students_high, file_name);
@@ -174,7 +121,6 @@ int main()
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-                        auto stop = time;
 
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
 
@@ -185,39 +131,13 @@ int main()
 
             case 13: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
                     cout << endl << student_amount << " studentų\n";
-                    {
-                        deque<Student> students;
-                        read_student_deque(students, file_name);
-
-                        auto start = std::chrono::high_resolution_clock::now();
-                        std::sort(students.begin(), students.end(), compare_by_final_score);
-                        
-                        deque<Student> students_low;
-                        deque<Student> students_high;
-
-                        auto it = students.begin();
-                        auto end = students.end();
-                        while (it != end) {
-                            if ((*it).get_final_score() < 5)
-                                students_low.push_back(*it);
-                            else
-                                students_high.push_back(*it);
-
-                            ++it;
-                        }
-
-                        auto time = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = time - start;
-                        cout << "rūšiavimas naudojant du naujus konteinerius užtruko: "<< diff.count() << "s\n";
-                    }
-
                     {
                         deque<Student> students_high;
                         read_student_deque(students_high, file_name);
@@ -238,10 +158,8 @@ int main()
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-                        auto stop = time;
 
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
-
                     }
                 }
                 break;

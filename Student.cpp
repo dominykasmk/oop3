@@ -178,7 +178,7 @@ void create_student_file(const std::string file_name, const unsigned student_amo
             ss << std::setw(15) << std::left << "Pavarde"
                 << std::setw(15) << std::left << "Vardas";
 
-            for (int i{}; i < scores_amount - 1; i++) {
+            for (unsigned i{}; i < scores_amount - 1; i++) {
                 ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
             }
             ss << std::setw(15) << std::left << "Egzaminas";
@@ -186,13 +186,13 @@ void create_student_file(const std::string file_name, const unsigned student_amo
             ss << "\n";
             student_file << ss.str();
 
-            for (int i{}; i < student_amount; i++) {
+            for (unsigned i{}; i < student_amount; i++) {
 
                 string first_name = "Vardas" + std::to_string(i + 1);
                 string last_name = "Pavarde" + std::to_string(i + 1);
 
                 vector<unsigned> temp_scores;
-                for (int i{}; i < scores_amount - 1; i++) {
+                for (unsigned i{}; i < scores_amount - 1; i++) {
                     temp_scores.push_back(generate_random_score());
                 }
                 unsigned test_score = generate_random_score();
@@ -228,7 +228,7 @@ void write_student_file(const std::vector<Student> &students, const std::string 
             ss << std::setw(15) << std::left << "Pavarde"
                 << std::setw(15) << std::left << "Vardas";
 
-            for (int i{}; i < students[0].get_score_amount(); i++) {
+            for (unsigned i{}; i < students[0].get_score_amount(); i++) {
                 ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
             }
             ss << std::setw(15) << std::left << "Egzaminas";

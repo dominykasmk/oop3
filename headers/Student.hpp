@@ -32,8 +32,8 @@ class Student {
     string first_name;
     string last_name;
 
-    vector<unsigned> scores;
     unsigned test_score{};
+    vector<unsigned> scores;
 
     double score_average{};
     double score_median{};
