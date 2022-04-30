@@ -1,4 +1,4 @@
-#include "headers/students.hpp"
+#include "headers/Student.hpp"
 
 
 int main()
@@ -77,7 +77,7 @@ int main()
                         auto it = students.begin();
                         auto end = students.end();
                         while (it != end) {
-                            if ((*it).final_score_avg < 5)
+                            if ((*it).get_final_score() < 5)
                                 students_low.push_back(*it);
                             else
                                 students_high.push_back(*it);
@@ -101,7 +101,7 @@ int main()
                         auto end = students_high.end();
 
                         for (; it != end; ++it) {
-                            if ((*it).final_score_avg >= 5)
+                            if ((*it).get_final_score() >= 5)
                                 break;
 
                             students_low.push_back(*it);
@@ -141,7 +141,7 @@ int main()
                         auto it = students.begin();
                         auto end = students.end();
                         while (it != end) {
-                            if ((*it).final_score_avg < 5)
+                            if ((*it).get_final_score() < 5)
                                 students_low.push_back(*it);
                             else
                                 students_high.push_back(*it);
@@ -165,7 +165,7 @@ int main()
                         auto end = students_high.end();
 
                         for (; it != end; ++it) {
-                            if ((*it).final_score_avg >= 5)
+                            if ((*it).get_final_score() >= 5)
                                 break;
 
                             students_low.push_back(*it);
@@ -205,7 +205,7 @@ int main()
                         auto it = students.begin();
                         auto end = students.end();
                         while (it != end) {
-                            if ((*it).final_score_avg < 5)
+                            if ((*it).get_final_score() < 5)
                                 students_low.push_back(*it);
                             else
                                 students_high.push_back(*it);
@@ -229,7 +229,7 @@ int main()
                         auto end = students_high.end();
 
                         for (; it != end; ++it) {
-                            if ((*it).final_score_avg >= 5)
+                            if ((*it).get_final_score() >= 5)
                                 break;
 
                             students_low.push_back(*it);

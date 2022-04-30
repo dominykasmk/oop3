@@ -228,7 +228,7 @@ void write_student_file(const std::vector<Student> &students, const std::string 
             ss << std::setw(15) << std::left << "Pavarde"
                 << std::setw(15) << std::left << "Vardas";
 
-            for (int i{}; i < students[0].get_score_amount() - 1; i++) {
+            for (int i{}; i < students[0].get_score_amount(); i++) {
                 ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
             }
             ss << std::setw(15) << std::left << "Egzaminas";
