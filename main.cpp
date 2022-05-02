@@ -74,13 +74,14 @@ int main()
                         auto it = students_high.begin();
                         auto end = students_high.end();
 
-                        for (; it != end; ++it) {
-                            if ((*it).get_final_score() >= 5)
+                        for (; end != it; end--) {
+                            if ((*end).get_final_score() <= 5)
                                 break;
 
-                            students_low.push_back(*it);
+                            students_low.push_back(*end);
+                            //students_high.pop_back();
                         }
-                        students_high.erase(students_high.begin(), it);
+                        students_high.resize(students_high.size() - students_low.size());
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;

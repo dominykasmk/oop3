@@ -31,7 +31,7 @@ using std::istringstream;
 class Student {
     string first_name;
     string last_name;
-
+   
     unsigned test_score{};
     vector<unsigned> scores;
 
@@ -42,6 +42,7 @@ class Student {
     double final_score_med{};
 
 public:
+    Student() {};
     Student(std::string& data);
     Student(std::string first_name, std::string last_name, unsigned test_score, std::vector<unsigned> scores);
     void read_student(std::string& data);
