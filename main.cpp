@@ -1,4 +1,4 @@
-#include "students.hpp"
+#include "headers/Student.hpp"
 
 
 int main()
@@ -8,11 +8,10 @@ int main()
         unsigned option;
         cout << "\nPasirinkite\n"
             << "0 - baigti programą\n"
-            << "1 - Įvesti studentų duomenis ranka\n"
-            << "2 - Sugeneruoti 5 studentų sąrašus automatiškai\n"
-            << "  21 - atlikti testus naudojant vektorių\n"
-            << "  22 - atliiti naudojant list'ą\n"
-            << "  23 - atlikti naudojant dek'ą\n"
+            << "1 - Sugeneruoti 5 studentų sąrašus automatiškai\n"
+            << "  11 - atlikti testus naudojant vektorių\n"
+            << "  12 - atliiti testus naudojant list'ą\n"
+            << "  13 - atlikti testus naudojant dek'ą\n"
 
             << endl;
 
@@ -20,7 +19,7 @@ int main()
             cout << "> ";
             cin >> option;
 
-            if (cin && (option == 0 || option == 1 || option == 2 || option == 21 || option == 22 || option == 23)) {
+            if (cin && (option == 0 || option == 1 || option == 11 || option == 12 || option == 13)) {
                 break;         
             }
             else {
@@ -36,47 +35,6 @@ int main()
                 return 0;
 
             case 1: {
-
-                vector<Student> students;
-                cout << "\nJeigu norite baigti įvestį, įveskite 'x'\n";
-
-                while (true) {
-
-                    Student student;
-                    if(input_student(&student) == -1) {
-                        break;
-                    }
-                    
-                    calculate_averages(student);
-                    students.push_back(student);
-                }
-
-                if (students.empty()) {
-                    cout << "\nNeįvedėte nei vieno studento.\n" << endl;
-                    return 0;
-                }
-
-                cout << "\nPasirinkite ar norite apskaičiuoti vidurkį (1) ar medianą (2)?" << endl;
-                unsigned option;
-                while (true) {
-
-                    cout << "> ";
-                    cin >> option;
-                    if (cin && (option == 1 || option == 2)) {
-                        print_students(students, option);
-                        break;
-                    }
-                    else {
-                        cout << "Įveskite 1 arba 2\n";
-                        cin.clear();
-                        ignore_line();
-                    }
-                }
-
-                break;
-            }
-
-            case 2: {
 
                 unsigned student_amount = 100;
                 unsigned scores_amount = 5;
@@ -97,172 +55,114 @@ int main()
                 break;
             }
 
-            case 21: {
+            case 11: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
+                    cout << endl << student_amount << " studentų\n";
+                    {
+                        vector<Student> students_high;
+                        read_student_vector(students_high, file_name);
+                        auto start = std::chrono::high_resolution_clock::now();
+                        std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
+                        vector<Student> students_low;
 
-                    //reading
-                    ifstream student_file;
-                    vector<Student> student_vector;
+                        auto it = students_high.begin();
+                        auto end = students_high.end();
 
-                    auto start = std::chrono::high_resolution_clock::now();
+                        for (; end != it; end--) {
+                            if ((*end).get_final_score() <= 5)
+                                break;
 
-                    read_student_vector(student_vector, file_name);
-
-                    auto time = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> diff = time - start;
-                    auto stop = time;
-
-                    cout << endl << student_amount << "ies studentu vektoriaus nuskaitymas užtruko: "<< diff.count() << "s\n";
-
-                    // sorting
-                    std::sort(student_vector.begin(), student_vector.end(), compare_by_final_score);
-                    
-                    vector<Student> students_low;
-                    vector<Student> students_high;
-
-                    auto it = student_vector.begin();
-                    auto end = student_vector.end();
-
-                    for (; it != end; it++) {
-                        
-                        if ((*it).final_score_avg >= 5) {
-                            break;
+                            students_low.push_back(*end);
+                            //students_high.pop_back();
                         }
+                        students_high.resize(students_high.size() - students_low.size());
 
-                        students_low.push_back(*it);
+                        auto time = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double> diff = time - start;
+
+                        cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
+
                     }
-
-                    for (; it != end; it++) {
-                        
-                        students_high.push_back(*it);
-                    }
-
-                    time = std::chrono::high_resolution_clock::now();
-                    diff = time - stop;
-                    stop = time;
-
-                    cout << student_amount << "ies studentu vektoriaus rūšiavimas į dvi grupes užtruko: "<< diff.count() << "s\n";
-
-                    student_vector.clear();
-                    students_low.clear();
-                    students_high.clear();
                 }
-
                 break;
             }
 
-
-            case 22: {
+            case 12: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
+                    cout << endl << student_amount << " studentų\n";
+                    {
+                        list<Student> students_high;
+                        read_student_list(students_high, file_name);
+                        auto start = std::chrono::high_resolution_clock::now();
+                        students_high.sort(compare_by_final_score);
+                        vector<Student> students_low;
 
-                    //reading
-                    ifstream student_file;
-                    std::list<Student> student_list;
+                        auto it = students_high.begin();
+                        auto end = students_high.end();
 
-                    auto start = std::chrono::high_resolution_clock::now();
+                        for (; it != end; ++it) {
+                            if ((*it).get_final_score() >= 5)
+                                break;
 
-                    read_student_list(student_list, file_name);
+                            students_low.push_back(*it);
+                        }
+                        students_high.erase(students_high.begin(), it);
 
-                    auto time = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> diff = time - start;
-                    auto stop = time;
+                        auto time = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double> diff = time - start;
 
-                    cout << endl << student_amount << "ies studentu list'o nuskaitymas iš failo užtruko: "<< diff.count() << "s\n";
+                        cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
 
-                    // sorting
-                    std::list<Student> students_low;
-                    std::list<Student> students_high;
-                    student_list.sort(compare_by_final_score);
-
-                    auto beg = student_list.begin();
-                    for (;;beg++) {
-                        if ((*beg).final_score_avg >= 5)
-                            break;
-
-                        students_low.push_back(*beg);
                     }
-
-                    for (; beg != student_list.end(); beg++) {
-                        students_high.push_back(*beg);
-                    } 
-
-                    time = std::chrono::high_resolution_clock::now();
-                    diff = time - stop;
-                    stop = time;
-
-                    cout << student_amount << "ies studentu list'o rūšiavimas į dvi grupes užtruko: "<< diff.count() << "s\n";
-
-                    students_low.clear();
-                    students_high.clear();
-                    student_list.clear();
                 }
-
                 break;
             }
 
-            case 23: {
+            case 13: {
                 
-                unsigned student_amount = 100;
+                unsigned student_amount = 10000;
                 string temp_file_name("studentai");
-                for (int i{}; i < 5; i++) {
+                for (int i{}; i < 2; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
+                    cout << endl << student_amount << " studentų\n";
+                    {
+                        deque<Student> students_high;
+                        read_student_deque(students_high, file_name);
+                        auto start = std::chrono::high_resolution_clock::now();
+                        std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
+                        deque<Student> students_low;
 
-                    //reading
-                    ifstream student_file;
-                    std::deque<Student> student_deque;
+                        auto it = students_high.begin();
+                        auto end = students_high.end();
 
-                    auto start = std::chrono::high_resolution_clock::now();
+                        for (; it != end; ++it) {
+                            if ((*it).get_final_score() >= 5)
+                                break;
 
-                    read_student_deque(student_deque, file_name);
+                            students_low.push_back(*it);
+                        }
+                        students_high.erase(students_high.begin(), it);
 
-                    auto time = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> diff = time - start;
-                    auto stop = time;
+                        auto time = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double> diff = time - start;
 
-                    cout << endl << student_amount << "ies studentu deko nuskaitymas iš failo užtruko: "<< diff.count() << "s\n";
-
-                    // sorting
-                    std::deque<Student> students_low;
-                    std::deque<Student> students_high;
-                    std::sort(student_deque.begin(), student_deque.end(), compare_by_final_score);
-
-                    auto beg = student_deque.begin();
-                    for (;;beg++) {
-                        if ((*beg).final_score_avg >= 5)
-                            break;
-
-                        students_low.push_back(*beg);
+                        cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
                     }
-
-                    for (; beg != student_deque.end(); beg++) {
-                        students_high.push_back(*beg);
-                    }
-
-                    time = std::chrono::high_resolution_clock::now();
-                    diff = time - stop;
-                    stop = time;
-
-                    cout << student_amount << "ies studentu deko rūšiavimas į dvi grupes užtruko: "<< diff.count() << "s\n";
-
-                    student_deque.clear();
-                    students_low.clear();
-                    students_high.clear();
                 }
-
                 break;
             }
 
