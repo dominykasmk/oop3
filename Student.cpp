@@ -93,6 +93,99 @@ std::ostream& operator<< (std::ostream& out, const Student& student)
     return out;
 }
 
+std::istream& operator>> (std::istream& in, Student& student)
+{
+    string prompt{"\nĮveskite studento vardą\n"};
+    string input;
+    input_valid_string(input, prompt);
+    student.first_name = input;
+
+    prompt = "\nĮveskite studento pavardę\n";
+    input_valid_string(input, prompt);
+    student.last_name = input;
+
+    unsigned max_scores_amount = 100;
+    prompt = "\nAr norėtumėte sugeneruoti pažymius atsitiktinai?(y/n)\n";
+        
+    while (true) {
+        
+        input_valid_string(input, prompt);
+
+        if (input == "y" || input == "taip") {
+                
+            cout << "\nPasirinkite kiek pažymių sugeneruoti(1/100)" << endl;
+            unsigned amount_to_generate{};
+
+            while (true) {
+
+                cout << "> ";
+                cin >> amount_to_generate;
+                if (cin && amount_to_generate >= 1 && amount_to_generate <= 100) {
+
+                    unsigned score;
+                    cout << "\nSugeneruoti pažymiai\n";
+                    for (unsigned i{}; i < amount_to_generate; i++) {
+                            
+                            student.scores.push_back(generate_random_score());
+                            cout << student.scores.back() << " ";
+                            student.scores.size() % 10 == 0 ? cout << '\n' : cout << "";
+                    }
+
+                    student.test_score = student.scores.back();
+                    student.scores.pop_back();
+
+                    cout << endl;
+                    break;
+                }
+                else {
+                    cout << "\nĮveskite skaičių nuo 1 iki 100\n";  
+                    cin.clear();
+                    ignore_line();
+                    continue;
+                }
+            }
+            break;
+        }
+        else if (input == "n" || input == "ne") {
+
+            unsigned score;
+            cout << "\nVeskite studento pažymius (paskutinis turi būti egzamino pažymys).\n"
+                << "Įveskite -1 jei norite baigti įvedimą\n"
+                << "Pažymių kiekis neturi viršyti 10ies\n" << endl;
+
+            while (true) {
+
+                cout << "> ";
+                cin >> score;
+                if (cin && score >= 1 && score <= 10) {
+                    student.scores.push_back(score);
+                }
+                else {
+                    if (score == -1)
+                    {
+                        student.test_score = student.scores.back();
+                        student.scores.pop_back();
+                        break;
+                    }
+
+                    cout << "\nĮveskite skaičių tarp 1 ir 10\n";
+                    cin.clear();
+                    ignore_line(); 
+                }
+            }
+            break;
+        }
+        else {
+            prompt = "\n'y' arba 'taip' jei norite generuoti atsitiktinai, 'ne' jei ne\n";
+        }
+    }
+
+    cin.clear();
+    ignore_line();
+
+    return in;
+}
+
 void ignore_line()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

@@ -3,6 +3,7 @@
 
 int main()
 {
+    vector<Student> students;
     while(true) {
 
         unsigned option;
@@ -12,6 +13,8 @@ int main()
             << "  11 - atlikti testus naudojant vektorių\n"
             << "  12 - atliiti testus naudojant list'ą\n"
             << "  13 - atlikti testus naudojant dek'ą\n"
+            << "2 - Įvesti studentus ranka\n"
+            << "3 - Spausdinti įvestus studentus\n"
 
             << endl;
 
@@ -19,7 +22,7 @@ int main()
             cout << "> ";
             cin >> option;
 
-            if (cin && (option == 0 || option == 1 || option == 11 || option == 12 || option == 13)) {
+            if (cin && (option == 0 || option == 1 || option == 11 || option == 12 || option == 13 || option == 2 || option == 3)) {
                 break;         
             }
             else {
@@ -167,6 +170,45 @@ int main()
 
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
                     }
+                }
+                break;
+            }
+
+            case 2: {
+                
+                bool continue_input;
+                do {
+
+                    Student student;
+                    cin >> student;
+                    student.calculate_averages();
+                    students.push_back(student);
+
+                    cout << "\nAr norite testi įvestį? (y/n)";
+                    string input;
+                    while (true) {
+                        cin >> input;
+                        if (cin && input == "y") {
+                            continue_input = true;
+                            break;
+                        }
+                        else if (cin && input == "n") {
+                            continue_input = false;
+                            break;
+                        }
+                        else {
+                            cout << "\nPasirinkite 'y' jei norite tęsti ir 'n' jei ne";
+                            cin.clear();
+                            ignore_line();
+                        }
+                    }
+                } while (continue_input);
+                break;
+            }
+
+            case 3: {
+                for (const auto& student : students) {
+                    cout << student;
                 }
                 break;
             }

@@ -59,6 +59,7 @@ public:
     const vector<unsigned>& get_scores() const;
 
     friend std::ostream& operator<< (std::ostream& out, const Student& student);
+    friend std::istream& operator>> (std::istream& in, Student& student);
 };
 
 
