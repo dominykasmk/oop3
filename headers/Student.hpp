@@ -42,9 +42,12 @@ class Student {
     double final_score_med{};
 
 public:
-    Student() {};
+    Student() = default;
+    Student(const Student&) = default;
+    Student& operator = (const Student &) = default;
     Student(std::string& data);
     Student(std::string first_name, std::string last_name, unsigned test_score, std::vector<unsigned> scores);
+    ~Student() {};
     void read_student(std::string& data);
     void write_student(std::ostringstream& ss) const;
     void calculate_averages();
@@ -53,6 +56,7 @@ public:
     string get_first_name() const;
     string get_last_name() const;
     double get_final_score() const;
+    const vector<unsigned>& get_scores() const;
 };
 
 

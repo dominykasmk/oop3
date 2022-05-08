@@ -71,6 +71,11 @@ double Student::get_final_score() const
     return final_score_avg;
 }
 
+const std::vector<unsigned>& Student::get_scores() const
+{
+    return scores;
+}
+
 void ignore_line()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
