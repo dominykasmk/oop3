@@ -57,6 +57,8 @@ public:
     string get_last_name() const;
     double get_final_score() const;
     const vector<unsigned>& get_scores() const;
+
+    friend std::ostream& operator<< (std::ostream& out, const Student& student);
 };
 
 

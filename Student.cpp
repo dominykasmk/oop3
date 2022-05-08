@@ -76,6 +76,23 @@ const std::vector<unsigned>& Student::get_scores() const
     return scores;
 }
 
+
+std::ostream& operator<< (std::ostream& out, const Student& student)
+{
+    out << student.first_name << " " << student.last_name << "\n"
+        << "Namų darbų pažymiai: ";
+    
+    for (const auto& score: student.scores) {
+        out << score << " ";
+    }
+    out << "\n";
+
+    out << "Egzaminas: " << student.test_score << "\n"
+        << "Galutinis: " << student.final_score_avg << "\n\n";
+
+    return out;
+}
+
 void ignore_line()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

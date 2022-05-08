@@ -57,9 +57,9 @@ int main()
 
             case 11: {
                 
-                unsigned student_amount = 10000;
+                unsigned student_amount = 100;
                 string temp_file_name("studentai");
-                for (int i{}; i < 2; i++) {
+                for (int i{}; i < 1; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
@@ -67,6 +67,10 @@ int main()
                     {
                         vector<Student> students_high;
                         read_student_vector(students_high, file_name);
+                        for (size_t i{}; i < students_high.size(); i++) {
+                            cout << students_high[i];
+                        }
+                        /* 
                         auto start = std::chrono::high_resolution_clock::now();
                         std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
                         vector<Student> students_low;
@@ -87,6 +91,7 @@ int main()
                         std::chrono::duration<double> diff = time - start;
 
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
+                        */
 
                     }
                 }
