@@ -1,6 +1,6 @@
-# Versija 1.5
+# Versija 2.0
 
-Šioje programos versijoje yra naudojama abstrakti klasė Human iš kurios paveldėja Student
+Šioje programos versijoje pridėjau dokumentaciją ir unit testus
 
 ## Kaip parunnint
 
@@ -59,5 +59,8 @@
  - Pridėjau 'rule of three' konstriuktorius ir << ir >> operatorius studentų klasei
  - Pridėjau porą meniu punktų demonstruojančių įvedimą ir išvedimą naudojant << ir >> operatorius
 
-## [v1.5](https://github.com/dominykasmk/oop3/tree/v1.2) (11/05/2022)
+## [v1.5](https://github.com/dominykasmk/oop3/tree/v1.5) (11/05/2022)
  - Parašiau abstrakčią klasę Human iš kurios dabar paveldėja Student
+
+## [v2.0](https://github.com/dominykasmk/oop3/tree/v2.0) (11/05/2022)
+ - Pridėjau doxygen dokumentaciją
