@@ -3,6 +3,7 @@
 
 int main()
 {
+
     vector<Student> students;
     while(true) {
 

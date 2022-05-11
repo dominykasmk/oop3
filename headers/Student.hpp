@@ -28,7 +28,21 @@ using std::ifstream;
 using std::istringstream;
 
 
-class Student {
+class Human {
+    protected:
+        std::string first_name;
+        std::string last_name;
+
+    public:
+        std::string get_first_name() const { return first_name; };
+        std::string get_last_name() const { return last_name; };
+        
+        virtual void set_first_name(std::string name) = 0;
+        virtual void set_last_name(std:: string name) = 0;
+};
+
+
+class Student : public Human {
     string first_name;
     string last_name;
    
@@ -48,6 +62,10 @@ public:
     Student(std::string& data);
     Student(std::string first_name, std::string last_name, unsigned test_score, std::vector<unsigned> scores);
     ~Student() {};
+    
+    void set_first_name(std::string name) override { first_name = name; };
+    void set_last_name(std::string name) override { last_name = name; };
+
     void read_student(std::string& data);
     void write_student(std::ostringstream& ss) const;
     void calculate_averages();
