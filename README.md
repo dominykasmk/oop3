@@ -4,7 +4,7 @@
 
 ## Kaip parunnint
 
- - `git clone https://github.com/dominykasmk/oop2.git`
+ - `git clone https://github.com/dominykasmk/oop3.git`
  - `cd oop-test`
  - `cmake -S . -B out/`
  - `cd out/ && make`
