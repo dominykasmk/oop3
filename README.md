@@ -1,6 +1,6 @@
 # Versija 1.5
 
-Ši programos versija leidžia pamatyti kaip skiriasi konteinerių rūšiavimas ir grupavimas į du skirtingus konteinerius naudojant vieną naują konteinerį ir naudojant klases
+Šioje programos versijoje yra naudojama abstrakti klasė Human iš kurios paveldėja Student
 
 ## Kaip parunnint
 
