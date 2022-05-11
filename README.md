@@ -1,4 +1,4 @@
-# Versija 1.2
+# Versija 1.5
 
 Ši programos versija leidžia pamatyti kaip skiriasi konteinerių rūšiavimas ir grupavimas į du skirtingus konteinerius naudojant vieną naują konteinerį ir naudojant klases
 
@@ -58,3 +58,6 @@
 ## [v1.2](https://github.com/dominykasmk/oop3/tree/v1.2) (08/05/2022)
  - Pridėjau 'rule of three' konstriuktorius ir << ir >> operatorius studentų klasei
  - Pridėjau porą meniu punktų demonstruojančių įvedimą ir išvedimą naudojant << ir >> operatorius
+
+## [v1.5](https://github.com/dominykasmk/oop3/tree/v1.2) (11/05/2022)
+ - Parašiau abstrakčią klasę Human iš kurios dabar paveldėja Student
