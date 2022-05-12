@@ -1,4 +1,4 @@
-#include "headers/Student.hpp"
+#include "../headers/Student.hpp"
 
 Student::Student(std::string& data)
 {
