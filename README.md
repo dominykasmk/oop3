@@ -5,8 +5,8 @@
 ## Kaip parunnint
 
  - `git clone https://github.com/dominykasmk/oop3.git`
- - `cd oop-test`
- - `cmake -S . -B out/`
+ - `cd oop3`
+ - `cmake -S ./src -B out/`
  - `cd out/ && make`
  - `./main`
 
@@ -64,3 +64,4 @@
 
 ## [v2.0](https://github.com/dominykasmk/oop3/tree/v2.0) (11/05/2022)
  - Pridėjau doxygen dokumentaciją
+ - Pridėjau unit testus kai kuriom funkcijom
