@@ -1,0 +1,106 @@
+Šioje programos versijoje pridėjau dokumentaciją ir unit testus\hypertarget{md_README_autotoc_md1}{}\doxysection{Kaip parunnint}\label{md_README_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\ttfamily git clone \href{https://github.com/dominykasmk/oop3.git}{\texttt{ https\+://github.\+com/dominykasmk/oop3.\+git}}}
+\item {\ttfamily cd oop-\/test}
+\item {\ttfamily cmake -\/S . -\/B out/}
+\item {\ttfamily cd out/ \&\& make}
+\item {\ttfamily ./main}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md2}{}\doxysection{Changelog}\label{md_README_autotoc_md2}
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md4}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v0.\+1\char`\"{} $>$v0.\+1$<$/a$>$ (22/02/2022)}\label{md_README_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Implementuota naudojant dinaminius C masyvus ir vektorius 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v0.\+2\char`\"{} $>$v0.\+2$<$/a$>$ (06/03/2022)}\label{md_README_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Pridėta galimybė nuskaityti studentus iš failo
+\item Outpute studentai yra surikiuojami pagal pavardes 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v0.\+3\char`\"{} $>$v0.\+3$<$/a$>$ (06/03/2022)}\label{md_README_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Pridėtas exception\textquotesingle{}ų checkinimas atidarinėjant failą
+\item Kodas jau buvo splittintas į headerį, metodų source\textquotesingle{}ą ir main source failą
+\item Kode jau buvo naudojamos struktūros 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md7}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v0.\+4\char`\"{} $>$v0.\+4$<$/a$>$ (05/04/2022)}\label{md_README_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Pridėjau galimybę sugeneruoti studentų failus automatiškai
+\item Programa sugeneruoja 5 studentų failus, surušiuoja pagal pažymius ir pagal tai įšveda į du skirtingus failus
+\item Visi testai matuojami ir yra išvedama kiek kas laiko užėmė 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v0.\+5\char`\"{} $>$v0.\+5$<$/a$>$ (06/04/2022)}\label{md_README_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Implementuotas testas tikrinantis duomenų nuskaitymą iš failų ir rūšiavimą į dvi kategorijas naudojant vektorių, listą ir deką
+\end{DoxyItemize}
+
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{vector.png}
+\end{DoxyInlineImage}
+   
+
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{list.png}
+\end{DoxyInlineImage}
+   
+
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{deque.png}
+\end{DoxyInlineImage}
+   \hypertarget{md_README_autotoc_md9}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop2/tree/v1.\+0\char`\"{} $>$v1.\+0$<$/a$>$ (17/04/2022)}\label{md_README_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Ši versija matuoja kaip skiriasi studentų rušiavimas į dvi grupes naudojant vieną naują/du naujus konteinerius naudojant vektorių, list\textquotesingle{}ą arba dek\textquotesingle{}ą 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md10}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop3/tree/v1.\+1\char`\"{} $>$v1.\+1$<$/a$>$ (30/04/2022)}\label{md_README_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Pereita prie klasių vietoj struktūrų
+\item Palyginau programos veikimo spartą naudojant struktūras ir klases ir runninant testus su vektoriais ir 100000 ir 1000000 studentų failais
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysubsection{Struktūros}\label{md_README_autotoc_md11}
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{struct.png}
+\end{DoxyInlineImage}
+   \hypertarget{md_README_autotoc_md12}{}\doxysubsection{Klasės}\label{md_README_autotoc_md12}
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{class.png}
+\end{DoxyInlineImage}
+   
+
+
+\begin{DoxyItemize}
+\item Palyginau testų spartą naudojant O1, O2 ir O3 kompiliatoriaus optimizavimo flagus
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md13}{}\doxysubsection{OP1}\label{md_README_autotoc_md13}
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{OP1.png}
+\end{DoxyInlineImage}
+   \hypertarget{md_README_autotoc_md14}{}\doxysubsection{OP2}\label{md_README_autotoc_md14}
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{OP2.png}
+\end{DoxyInlineImage}
+   \hypertarget{md_README_autotoc_md15}{}\doxysubsection{OP3}\label{md_README_autotoc_md15}
+ 
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{OP3.png}
+\end{DoxyInlineImage}
+   \hypertarget{md_README_autotoc_md16}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop3/tree/v1.\+2\char`\"{} $>$v1.\+2$<$/a$>$ (08/05/2022)}\label{md_README_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Pridėjau \textquotesingle{}rule of three\textquotesingle{} konstriuktorius ir \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} ir \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} operatorius studentų klasei
+\item Pridėjau porą meniu punktų demonstruojančių įvedimą ir išvedimą naudojant \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} ir \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} operatorius
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md17}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop3/tree/v1.\+5\char`\"{} $>$v1.\+5$<$/a$>$ (11/05/2022)}\label{md_README_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Parašiau abstrakčią klasę \mbox{\hyperlink{classHuman}{Human}} iš kurios dabar paveldėja \mbox{\hyperlink{classStudent}{Student}}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md18}{}\doxysection{$<$a href=\char`\"{}https\+://github.\+com/dominykasmk/oop3/tree/v2.\+0\char`\"{} $>$v2.\+0$<$/a$>$ (11/05/2022)}\label{md_README_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Pridėjau doxygen dokumentaciją 
+\end{DoxyItemize}
