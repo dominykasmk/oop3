@@ -42,15 +42,22 @@ int main()
 
                 unsigned student_amount = 100;
                 unsigned scores_amount = 5;
-                string temp_file_name("studentai");
+                string temp_file_name("../student_files/studentai");
                 for (int i{}; i < 5; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
 
                     auto start = std::chrono::high_resolution_clock::now();
+
                     // creating
-                    create_student_file(file_name, student_amount, scores_amount);
+                    try {
+                        create_student_file(file_name, student_amount, scores_amount);
+                    }
+                    catch (string e) {
+                        std::cerr << "\nKlaida kuriant failą\n";
+                    }
+
                     auto time = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double> diff = time - start;
 
@@ -62,40 +69,43 @@ int main()
             case 11: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("../out/studentai");
+                string temp_file_name("../student_files/studentai");
                 for (int i{}; i < 1; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
                     cout << endl << student_amount << " studentų\n";
                     {
-                        vector<Student> students_high;
-                        read_student_file(students_high, file_name);
-                        for (size_t i{}; i < students_high.size(); i++) {
-                            cout << students_high[i];
-                        }
-                        /* 
-                        auto start = std::chrono::high_resolution_clock::now();
-                        std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
                         vector<Student> students_low;
 
-                        auto it = students_high.begin();
-                        auto end = students_high.end();
+                        try {
+                            read_student_file(students_low, file_name);
+                        }
+                        catch (string e) {
+                            cout << "\nKlaida atidarinėjant failą\n" << endl;
+                        }
+
+                        auto start = std::chrono::high_resolution_clock::now();
+                        std::sort(students_low.begin(), students_low.end(), compare_by_final_score);
+                        vector<Student> students_high;
+
+                        auto it = students_low.begin();
+                        auto end = students_low.end() - 1;
 
                         for (; end != it; end--) {
-                            if ((*end).get_final_score() <= 5)
+                            if ((*end).get_final_score() < 5)
                                 break;
 
-                            students_low.push_back(*end);
+                            students_high.push_back(*end);
                             //students_high.pop_back();
                         }
-                        students_high.resize(students_high.size() - students_low.size());
+                        students_low.resize(students_low.size() - students_high.size());
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-
+                        write_student_file( students_high, "kietekai.txt" ) ;
+                        write_student_file( students_low, "vargsiukai.txt" ) ;
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
-                        */
 
                     }
                 }
@@ -105,8 +115,8 @@ int main()
             case 12: {
                 
                 unsigned student_amount = 10000;
-                string temp_file_name("studentai");
-                for (int i{}; i < 2; i++) {
+                string temp_file_name("../student_files/studentai");
+                for (int i{}; i < 1; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
@@ -131,7 +141,8 @@ int main()
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-
+                        write_student_file( students_high, "kietekai.txt" ) ;
+                        write_student_file( students_low, "vargsiukai.txt" ) ;
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
 
                     }
@@ -142,8 +153,8 @@ int main()
             case 13: {
                 
                 unsigned student_amount = 10000;
-                string temp_file_name("studentai");
-                for (int i{}; i < 2; i++) {
+                string temp_file_name("../student_files/studentai");
+                for (int i{}; i < 1; i++) {
                     
                     student_amount *= 10;
                     const string file_name = temp_file_name + std::to_string(student_amount) + ".txt";
@@ -168,7 +179,8 @@ int main()
 
                         auto time = std::chrono::high_resolution_clock::now();
                         std::chrono::duration<double> diff = time - start;
-
+                        write_student_file( students_high, "kietekai.txt" ) ;
+                        write_student_file( students_low, "vargsiukai.txt" ) ;
                         cout << "rūšiavimas naudojant vieną papildomą konteinerį užtruko: "<< diff.count() << "s\n";
                     }
                 }

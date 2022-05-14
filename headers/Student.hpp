@@ -65,6 +65,7 @@ class Student : public Human {
     double score_average{};
     double score_median{};
 
+    bool has_final_score{};
     double final_score_avg{};
     double final_score_med{};
 
@@ -96,16 +97,6 @@ public:
     /// @param last_name Studento pavardė
     void set_last_name(std::string name) override { last_name = name; };
 
-    /// Nuskaito duomenis apie studentą iš string'o
-    ///
-    /// @param data Reference'as į duomenų string'ą
-    void read_student(std::string& data);
-
-    /// Išveda studento duomenis į stringstreamą
-    ///
-    /// @param ss stringstreamas į kurį bus išvesti duomenys
-    void write_student(std::ostringstream& ss) const;
-
     /// Apskaičiuoja studento galutinį pažymį
     void calculate_averages();
 
@@ -120,6 +111,12 @@ public:
 
     /// Gražina pavardę
     string get_last_name() const;
+
+    /// Grąžina kintamąjį nurodantį ar studentas turi apskaičiuotą galutinį pažymį
+    bool get_has_final_score() const;
+
+    /// Grąžina egzamino pažymį
+    unsigned get_test_score() const;
 
     /// Gražina galutinį pažymį
     double get_final_score() const;
@@ -161,6 +158,73 @@ void sort_students(std::vector<Student> &students);
 /// Sukuria studentų failą
 void create_student_file(const std::string file_name, const unsigned student_amount, const unsigned scores_amount);
 
+/// Išveda studentus į failą
+void write_student_file(const std::vector<Student> &students, const std::string file_name);
+
+/// Nuskaito studentų failą į perduotą konteinerį
+template <typename T>
+void read_student_file(T& students, const std::string file_name) {
+
+    ifstream student_file;
+    student_file.open(file_name);
+
+    if (student_file.fail())
+        throw file_name;
+
+    else if (student_file.is_open()) {
+        string line;
+
+        getline(student_file, line);
+        while (getline(student_file, line)) {
+
+                istringstream iss(line);
+                Student student(line);
+                students.push_back(student);
+        }
+    }
+    student_file.close();
+}
+
+/// Įrašo studentų konteinerį į failą
+template <typename T>
+void write_student_file(T &students, const std::string file_name)
+{
+    std::ofstream student_file;
+    student_file.open(file_name);
+
+    if (student_file.fail())
+        throw file_name;
+
+    else if (student_file.is_open()) {
+        
+        std::ostringstream ss;
+        ss << std::setw(15) << std::left << "Pavarde"
+            << std::setw(15) << std::left << "Vardas";
+
+        unsigned score_amount = students.front().get_score_amount();
+        for (unsigned i{}; i < score_amount; i++) {
+            ss << std::setw(15) << std::left << "ND" + std::to_string(i + 1);
+        }
+        ss << std::setw(15) << std::left << "Egzaminas";
+
+        if (students.front().get_has_final_score())
+            ss << std::setw(15) << std::left << "Galutinis";
+        ss << "\n";
+        student_file << ss.str();
+
+        for (const auto &student : students) {
+            std::ostringstream ss;
+
+            //student.write_student(ss);
+            //student_file << ss.str();
+            student_file << student;
+        }
+
+        student_file.close();
+    }
+}
+
+/*
 /// Nuskaito studentus iš failo į vektorių
 void read_student_vector(std::vector<Student> &students, const std::string file_name);
 
@@ -169,37 +233,6 @@ void read_student_list(std::list<Student> &students, const std::string file_name
 
 /// Nuskaito studentus iš failo į dek'ą
 void read_student_deque(std::deque<Student> &students, const std::string file_name);
-
-/// Išveda studentus į failą
-void write_student_file(const std::vector<Student> &students, const std::string file_name);
-
-template <typename T>
-void read_student_file(T& students, const std::string file_name) {
-
-    ifstream student_file;
-    try {
-        student_file.open(file_name);
-
-        if (student_file.fail())
-            throw file_name;
-
-        else if (student_file.is_open()) {
-            string line;
-
-            getline(student_file, line);
-            while (getline(student_file, line)) {
-
-                    istringstream iss(line);
-                    Student student(line);
-                    students.push_back(student);
-            }
-        }
-
-        student_file.close();
-    }
-    catch (string e) {
-        cout << "\nKlaida atidarinėjant failą\n" << endl;
-    }
-}
+*/
 
 #endif
