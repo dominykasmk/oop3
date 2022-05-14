@@ -192,10 +192,7 @@ void write_student_file(T &students, const std::string file_name)
     std::ofstream student_file;
     student_file.open(file_name);
 
-    if (student_file.fail())
-        throw file_name;
-
-    else if (student_file.is_open()) {
+    if (student_file.is_open()) {
         
         std::ostringstream ss;
         ss << std::setw(15) << std::left << "Pavarde"
