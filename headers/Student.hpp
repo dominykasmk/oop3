@@ -123,6 +123,9 @@ public:
 
     /// Gražina galutinį pažymį
     double get_final_score() const;
+
+    /// Settina galutinį pažymį
+    void set_final_score(unsigned final_score) { final_score_avg = final_score; };
     
     /// Gražiną pažymių vektorių
     const vector<unsigned>& get_scores() const;
@@ -169,5 +172,34 @@ void read_student_deque(std::deque<Student> &students, const std::string file_na
 
 /// Išveda studentus į failą
 void write_student_file(const std::vector<Student> &students, const std::string file_name);
+
+template <typename T>
+void read_student_file(T& students, const std::string file_name) {
+
+    ifstream student_file;
+    try {
+        student_file.open(file_name);
+
+        if (student_file.fail())
+            throw file_name;
+
+        else if (student_file.is_open()) {
+            string line;
+
+            getline(student_file, line);
+            while (getline(student_file, line)) {
+
+                    istringstream iss(line);
+                    Student student(line);
+                    students.push_back(student);
+            }
+        }
+
+        student_file.close();
+    }
+    catch (string e) {
+        cout << "\nKlaida atidarinėjant failą\n" << endl;
+    }
+}
 
 #endif

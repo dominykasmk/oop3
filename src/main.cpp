@@ -62,7 +62,7 @@ int main()
             case 11: {
                 
                 unsigned student_amount = 100;
-                string temp_file_name("studentai");
+                string temp_file_name("../out/studentai");
                 for (int i{}; i < 1; i++) {
                     
                     student_amount *= 10;
@@ -70,7 +70,7 @@ int main()
                     cout << endl << student_amount << " studentų\n";
                     {
                         vector<Student> students_high;
-                        read_student_vector(students_high, file_name);
+                        read_student_file(students_high, file_name);
                         for (size_t i{}; i < students_high.size(); i++) {
                             cout << students_high[i];
                         }
@@ -113,7 +113,7 @@ int main()
                     cout << endl << student_amount << " studentų\n";
                     {
                         list<Student> students_high;
-                        read_student_list(students_high, file_name);
+                        read_student_file(students_high, file_name);
                         auto start = std::chrono::high_resolution_clock::now();
                         students_high.sort(compare_by_final_score);
                         vector<Student> students_low;
@@ -150,7 +150,7 @@ int main()
                     cout << endl << student_amount << " studentų\n";
                     {
                         deque<Student> students_high;
-                        read_student_deque(students_high, file_name);
+                        read_student_file(students_high, file_name);
                         auto start = std::chrono::high_resolution_clock::now();
                         std::sort(students_high.begin(), students_high.end(), compare_by_final_score);
                         deque<Student> students_low;
