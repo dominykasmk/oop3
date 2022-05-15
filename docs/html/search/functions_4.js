@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_0',['operator&lt;&lt;',['../Student_8cpp.html#aadd1864a776093e95f449dc91906f9eb',1,'Student.cpp']]],
-  ['operator_3d_1',['operator=',['../classStudent.html#ae58f6dde2999d82e728b383d87aceaa4',1,'Student']]],
-  ['operator_3e_3e_2',['operator&gt;&gt;',['../Student_8cpp.html#a346086824d08147b8544ca5403748e5d',1,'Student.cpp']]]
+  ['print_5fstudent_0',['print_student',['../classStudent.html#adda6ad7b0a3edd737b1a132731608fae',1,'Student']]],
+  ['print_5fstudents_1',['print_students',['../Student_8cpp.html#a1a083e49fa3c8fe23d2343d8dfa39abb',1,'print_students(const std::vector&lt; Student &gt; &amp;students, unsigned option):&#160;Student.cpp'],['../Student_8hpp.html#a1a083e49fa3c8fe23d2343d8dfa39abb',1,'print_students(const std::vector&lt; Student &gt; &amp;students, unsigned option):&#160;Student.cpp']]]
 ];

@@ -49,81 +49,144 @@
 \DoxyCodeLine{50 \};}
 \DoxyCodeLine{51 }
 \DoxyCodeLine{52 }
-\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{classStudent}{Student}} : \textcolor{keyword}{public} \mbox{\hyperlink{classHuman}{Human}} \{}
-\DoxyCodeLine{59     \textcolor{keywordtype}{string} first\_name;}
-\DoxyCodeLine{60     \textcolor{keywordtype}{string} last\_name;}
-\DoxyCodeLine{61    }
-\DoxyCodeLine{62     \textcolor{keywordtype}{unsigned} test\_score\{\};}
-\DoxyCodeLine{63     vector<unsigned> scores;}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65     \textcolor{keywordtype}{double} score\_average\{\};}
-\DoxyCodeLine{66     \textcolor{keywordtype}{double} score\_median\{\};}
+\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{classStudent}{Student}} : \textcolor{keyword}{public} \mbox{\hyperlink{classHuman}{Human}} \{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{string} first\_name;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{string} last\_name;}
+\DoxyCodeLine{57    }
+\DoxyCodeLine{58     \textcolor{keywordtype}{unsigned} test\_score\{\};}
+\DoxyCodeLine{59     vector<unsigned> scores;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{double} score\_average\{\};}
+\DoxyCodeLine{62     \textcolor{keywordtype}{double} score\_median\{\};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{bool} has\_final\_score\{\};}
+\DoxyCodeLine{65     \textcolor{keywordtype}{double} final\_score\_avg\{\};}
+\DoxyCodeLine{66     \textcolor{keywordtype}{double} final\_score\_med\{\};}
 \DoxyCodeLine{67 }
-\DoxyCodeLine{68     \textcolor{keywordtype}{double} final\_score\_avg\{\};}
-\DoxyCodeLine{69     \textcolor{keywordtype}{double} final\_score\_med\{\};}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{71 \textcolor{keyword}{public}:}
-\DoxyCodeLine{72     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{73     \mbox{\hyperlink{classStudent_aedb4571bc36388662d75f411ee91a42b}{Student}}(\textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}}\&) = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{74     \mbox{\hyperlink{classStudent}{Student}}\& \mbox{\hyperlink{classStudent_ae58f6dde2999d82e728b383d87aceaa4}{operator = }}(\textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}} \&) = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{79     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}(std::string\& data);}
-\DoxyCodeLine{80 }
-\DoxyCodeLine{87     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}(std::string first\_name, std::string last\_name, \textcolor{keywordtype}{unsigned} test\_score, std::vector<unsigned> scores);}
-\DoxyCodeLine{88 }
-\DoxyCodeLine{89     \mbox{\hyperlink{classStudent_a54a8ea060d6cd04222c3a2f89829f105}{\string~Student}}() \{\};}
-\DoxyCodeLine{90     }
-\DoxyCodeLine{93     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a289dce1f57fd48d89b789efc10b822e8}{set\_first\_name}}(std::string name)\textcolor{keyword}{ override }\{ first\_name = name; \};}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{97     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a30cb661ab5a6f5e7684c8c4d4ab2c5b1}{set\_last\_name}}(std::string name)\textcolor{keyword}{ override }\{ last\_name = name; \};}
+\DoxyCodeLine{68 \textcolor{keyword}{public}:}
+\DoxyCodeLine{69     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{70     \mbox{\hyperlink{classStudent_aedb4571bc36388662d75f411ee91a42b}{Student}}(\textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}}\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{71     \mbox{\hyperlink{classStudent}{Student}}\& \mbox{\hyperlink{classStudent_ae58f6dde2999d82e728b383d87aceaa4}{operator = }}(\textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}(std::string\& data);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{84     \mbox{\hyperlink{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}{Student}}(std::string first\_name, std::string last\_name, \textcolor{keywordtype}{unsigned} test\_score, std::vector<unsigned> scores);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \mbox{\hyperlink{classStudent_a54a8ea060d6cd04222c3a2f89829f105}{\string~Student}}() \{\};}
+\DoxyCodeLine{87     }
+\DoxyCodeLine{90     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a289dce1f57fd48d89b789efc10b822e8}{set\_first\_name}}(std::string name)\textcolor{keyword}{ override }\{ first\_name = name; \};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a30cb661ab5a6f5e7684c8c4d4ab2c5b1}{set\_last\_name}}(std::string name)\textcolor{keyword}{ override }\{ last\_name = name; \};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a43fb4947b3cff5e0767dd6d22dbe58f6}{calculate\_averages}}();}
 \DoxyCodeLine{98 }
-\DoxyCodeLine{102     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a2526fc8b580639e190a2803fa36009c3}{read\_student}}(std::string\& data);}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{107     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a64bcc106faec2b8d529f79ca059ba37d}{write\_student}}(std::ostringstream\& ss) \textcolor{keyword}{const};}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a43fb4947b3cff5e0767dd6d22dbe58f6}{calculate\_averages}}();}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_adda6ad7b0a3edd737b1a132731608fae}{print\_student}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{114 }
-\DoxyCodeLine{116     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classStudent_a61d2bed9085a825f4edbc7df78ac8ce9}{get\_score\_amount}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{117 }
-\DoxyCodeLine{119     \textcolor{keywordtype}{string} \mbox{\hyperlink{classStudent_a462f8c273e78acacca2e9523c7d41f85}{get\_first\_name}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{122     \textcolor{keywordtype}{string} \mbox{\hyperlink{classStudent_ac35d31850644e0fb1338b641c2dd58a9}{get\_last\_name}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{125     \textcolor{keywordtype}{double} \mbox{\hyperlink{classStudent_aadea61fed99a951155e28c4f6109365e}{get\_final\_score}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{126     }
-\DoxyCodeLine{128     \textcolor{keyword}{const} vector<unsigned>\& \mbox{\hyperlink{classStudent_aee9e2d56c453577ed9e7de7e5ade8fa4}{get\_scores}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{131     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{classStudent_aadd1864a776093e95f449dc91906f9eb}{operator<< }}(std::ostream\& out, \textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}}\& student);}
+\DoxyCodeLine{100     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_adda6ad7b0a3edd737b1a132731608fae}{print\_student}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classStudent_a61d2bed9085a825f4edbc7df78ac8ce9}{get\_score\_amount}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{string} \mbox{\hyperlink{classStudent_a462f8c273e78acacca2e9523c7d41f85}{get\_first\_name}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{string} \mbox{\hyperlink{classStudent_ac35d31850644e0fb1338b641c2dd58a9}{get\_last\_name}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{112     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classStudent_ac1c1e643e9f175e8588820df2b3db8d3}{get\_has\_final\_score}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{115     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classStudent_a168a47675c330234042d72b4ed92ec3a}{get\_test\_score}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{double} \mbox{\hyperlink{classStudent_aadea61fed99a951155e28c4f6109365e}{get\_final\_score}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} \mbox{\hyperlink{classStudent_a908afda709d451a3ad557d96d0c837dd}{set\_final\_score}}(\textcolor{keywordtype}{unsigned} final\_score) \{ final\_score\_avg = final\_score; \};}
+\DoxyCodeLine{122     }
+\DoxyCodeLine{124     \textcolor{keyword}{const} vector<unsigned>\& \mbox{\hyperlink{classStudent_aee9e2d56c453577ed9e7de7e5ade8fa4}{get\_scores}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{127     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{classStudent_aadd1864a776093e95f449dc91906f9eb}{operator<< }}(std::ostream\& out, \textcolor{keyword}{const} \mbox{\hyperlink{classStudent}{Student}}\& student);}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{130     \textcolor{keyword}{friend} std::istream\& \mbox{\hyperlink{classStudent_a346086824d08147b8544ca5403748e5d}{operator>> }}(std::istream\& in, \mbox{\hyperlink{classStudent}{Student}}\& student);}
+\DoxyCodeLine{131 \};}
 \DoxyCodeLine{132 }
-\DoxyCodeLine{134     \textcolor{keyword}{friend} std::istream\& \mbox{\hyperlink{classStudent_a346086824d08147b8544ca5403748e5d}{operator>> }}(std::istream\& in, \mbox{\hyperlink{classStudent}{Student}}\& student);}
-\DoxyCodeLine{135 \};}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{138 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ae580d9804d60b90d11d5fb43844f601a}{input\_valid\_string}}(std::string \&input, \textcolor{keyword}{const} std::string prompt);}
-\DoxyCodeLine{139 }
-\DoxyCodeLine{141 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a00ff5b674fe4e76d0cd573c9a9048522}{ignore\_line}}();}
-\DoxyCodeLine{142 }
-\DoxyCodeLine{144 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a1a083e49fa3c8fe23d2343d8dfa39abb}{print\_students}}(\textcolor{keyword}{const} std::vector<Student> \&students, \textcolor{keywordtype}{unsigned} option);}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{147 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Student_8hpp_a31c6d950691a538f5b0ba0a4e52c4533}{compare}}(\mbox{\hyperlink{classStudent}{Student}} a, \mbox{\hyperlink{classStudent}{Student}} b);}
-\DoxyCodeLine{148 }
-\DoxyCodeLine{150 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Student_8hpp_a07b914d20ad579697d6c0196c7dcd685}{compare\_by\_final\_score}}(\mbox{\hyperlink{classStudent}{Student}} a, \mbox{\hyperlink{classStudent}{Student}} b);}
-\DoxyCodeLine{151 }
-\DoxyCodeLine{153 \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{Student_8hpp_acf8aa37bb0602301b7eae7100ba2e58e}{generate\_random\_score}}();}
-\DoxyCodeLine{154 }
-\DoxyCodeLine{156 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a18dee34eb2f5adbc0d7a6e115ef3e61a}{sort\_students}}(std::vector<Student> \&students);}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{159 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ab9f41b6e11014c94bb2aa946680f53e0}{create\_student\_file}}(\textcolor{keyword}{const} std::string file\_name, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} student\_amount, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} scores\_amount);}
-\DoxyCodeLine{160 }
-\DoxyCodeLine{162 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a07cf2fc1ccbf17ae22c9e87d89ffe7d0}{read\_student\_vector}}(std::vector<Student> \&students, \textcolor{keyword}{const} std::string file\_name);}
+\DoxyCodeLine{134 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ae580d9804d60b90d11d5fb43844f601a}{input\_valid\_string}}(std::string \&input, \textcolor{keyword}{const} std::string prompt);}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{137 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a00ff5b674fe4e76d0cd573c9a9048522}{ignore\_line}}();}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{140 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a1a083e49fa3c8fe23d2343d8dfa39abb}{print\_students}}(\textcolor{keyword}{const} std::vector<Student> \&students, \textcolor{keywordtype}{unsigned} option);}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{143 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Student_8hpp_a31c6d950691a538f5b0ba0a4e52c4533}{compare}}(\mbox{\hyperlink{classStudent}{Student}} a, \mbox{\hyperlink{classStudent}{Student}} b);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{146 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Student_8hpp_a07b914d20ad579697d6c0196c7dcd685}{compare\_by\_final\_score}}(\mbox{\hyperlink{classStudent}{Student}} a, \mbox{\hyperlink{classStudent}{Student}} b);}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{149 \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{Student_8hpp_acf8aa37bb0602301b7eae7100ba2e58e}{generate\_random\_score}}();}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{152 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a18dee34eb2f5adbc0d7a6e115ef3e61a}{sort\_students}}(std::vector<Student> \&students);}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{155 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ab9f41b6e11014c94bb2aa946680f53e0}{create\_student\_file}}(\textcolor{keyword}{const} std::string file\_name, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} student\_amount, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} scores\_amount);}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{158 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ab94c896fe5912f7a7bb5ead5cc449f08}{write\_student\_file}}(\textcolor{keyword}{const} std::vector<Student> \&students, \textcolor{keyword}{const} std::string file\_name);}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{161 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{162 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_aa0d745ca556cf2927670def9a004c5b3}{read\_student\_file}}(T\& students, \textcolor{keyword}{const} std::string file\_name) \{}
 \DoxyCodeLine{163 }
-\DoxyCodeLine{165 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_a90e45dccb3dfb34d1791234c0323b97d}{read\_student\_list}}(std::list<Student> \&students, \textcolor{keyword}{const} std::string file\_name);}
+\DoxyCodeLine{164     ifstream student\_file;}
+\DoxyCodeLine{165     student\_file.open(file\_name);}
 \DoxyCodeLine{166 }
-\DoxyCodeLine{168 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ac2647d6370ace63d73a15c2b9e87fcaa}{read\_student\_deque}}(std::deque<Student> \&students, \textcolor{keyword}{const} std::string file\_name);}
+\DoxyCodeLine{167     \textcolor{keywordflow}{if} (student\_file.fail())}
+\DoxyCodeLine{168         \textcolor{keywordflow}{throw} file\_name;}
 \DoxyCodeLine{169 }
-\DoxyCodeLine{171 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ab94c896fe5912f7a7bb5ead5cc449f08}{write\_student\_file}}(\textcolor{keyword}{const} std::vector<Student> \&students, \textcolor{keyword}{const} std::string file\_name);}
+\DoxyCodeLine{170     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (student\_file.is\_open()) \{}
+\DoxyCodeLine{171         \textcolor{keywordtype}{string} line;}
 \DoxyCodeLine{172 }
-\DoxyCodeLine{173 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{173         getline(student\_file, line);}
+\DoxyCodeLine{174         \textcolor{keywordflow}{while} (getline(student\_file, line)) \{}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176                 istringstream iss(line);}
+\DoxyCodeLine{177                 \mbox{\hyperlink{classStudent}{Student}} student(line);}
+\DoxyCodeLine{178                 students.push\_back(student);}
+\DoxyCodeLine{179         \}}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{181     student\_file.close();}
+\DoxyCodeLine{182 \}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{185 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{186 \textcolor{keywordtype}{void} \mbox{\hyperlink{Student_8hpp_ab94c896fe5912f7a7bb5ead5cc449f08}{write\_student\_file}}(T \&students, \textcolor{keyword}{const} std::string file\_name)}
+\DoxyCodeLine{187 \{}
+\DoxyCodeLine{188     std::ofstream student\_file;}
+\DoxyCodeLine{189     student\_file.open(file\_name);}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     \textcolor{keywordflow}{if} (student\_file.is\_open()) \{}
+\DoxyCodeLine{192         }
+\DoxyCodeLine{193         std::ostringstream ss;}
+\DoxyCodeLine{194         ss << std::setw(15) << std::left << \textcolor{stringliteral}{"{}Pavarde"{}}}
+\DoxyCodeLine{195             << std::setw(15) << std::left << \textcolor{stringliteral}{"{}Vardas"{}};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197         \textcolor{keywordtype}{unsigned} score\_amount = students.front().get\_score\_amount();}
+\DoxyCodeLine{198         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i\{\}; i < score\_amount; i++) \{}
+\DoxyCodeLine{199             ss << std::setw(15) << std::left << \textcolor{stringliteral}{"{}ND"{}} + std::to\_string(i + 1);}
+\DoxyCodeLine{200         \}}
+\DoxyCodeLine{201         ss << std::setw(15) << std::left << \textcolor{stringliteral}{"{}Egzaminas"{}};}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203         \textcolor{keywordflow}{if} (students.front().get\_has\_final\_score())}
+\DoxyCodeLine{204             ss << std::setw(15) << std::left << \textcolor{stringliteral}{"{}Galutinis"{}};}
+\DoxyCodeLine{205         ss << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{206         student\_file << ss.str();}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&student : students) \{}
+\DoxyCodeLine{209             std::ostringstream ss;}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211             \textcolor{comment}{//student.write\_student(ss);}}
+\DoxyCodeLine{212             \textcolor{comment}{//student\_file << ss.str();}}
+\DoxyCodeLine{213             student\_file << student;}
+\DoxyCodeLine{214         \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216         student\_file.close();}
+\DoxyCodeLine{217     \}}
+\DoxyCodeLine{218 \}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{comment}{/*}}
+\DoxyCodeLine{222 \textcolor{comment}{void read\_student\_vector(std::vector<Student> \&students, const std::string file\_name);}}
+\DoxyCodeLine{223 \textcolor{comment}{}}
+\DoxyCodeLine{225 \textcolor{comment}{void read\_student\_list(std::list<Student> \&students, const std::string file\_name);}}
+\DoxyCodeLine{226 \textcolor{comment}{}}
+\DoxyCodeLine{228 \textcolor{comment}{void read\_student\_deque(std::deque<Student> \&students, const std::string file\_name);}}
+\DoxyCodeLine{229 \textcolor{comment}{*/}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

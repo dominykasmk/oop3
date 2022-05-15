@@ -1,6 +1,6 @@
-\hypertarget{Student_8cpp}{}\doxysection{Student.\+cpp File Reference}
-\label{Student_8cpp}\index{Student.cpp@{Student.cpp}}
-{\ttfamily \#include \char`\"{}headers/\+Student.\+hpp\char`\"{}}\newline
+\hypertarget{Student_8cpp}{}\doxysection{src/\+Student.cpp File Reference}
+\label{Student_8cpp}\index{src/Student.cpp@{src/Student.cpp}}
+{\ttfamily \#include \char`\"{}../headers/\+Student.\+hpp\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,15 +23,7 @@ bool \mbox{\hyperlink{Student_8cpp_a07b914d20ad579697d6c0196c7dcd685}{compare\+\
 void \mbox{\hyperlink{Student_8cpp_a18dee34eb2f5adbc0d7a6e115ef3e61a}{sort\+\_\+students}} (std\+::vector$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&students)
 \begin{DoxyCompactList}\small\item\em Surūšiuoja studentų vektorių \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{Student_8cpp_ab9f41b6e11014c94bb2aa946680f53e0}{create\+\_\+student\+\_\+file}} (const std\+::string file\+\_\+name, const unsigned student\+\_\+amount, const unsigned scores\+\_\+amount)
-\begin{DoxyCompactList}\small\item\em Sukuria studentų failą \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{Student_8cpp_ab94c896fe5912f7a7bb5ead5cc449f08}{write\+\_\+student\+\_\+file}} (const std\+::vector$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&students, const std\+::string file\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Išveda studentus į failą \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{Student_8cpp_a07cf2fc1ccbf17ae22c9e87d89ffe7d0}{read\+\_\+student\+\_\+vector}} (std\+::vector$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&students, const std\+::string file\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Nuskaito studentus iš failo į vektorių \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{Student_8cpp_a90e45dccb3dfb34d1791234c0323b97d}{read\+\_\+student\+\_\+list}} (std\+::list$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&students, const std\+::string file\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Nuskaito studentus iš failo į list\textquotesingle{}ą \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{Student_8cpp_ac2647d6370ace63d73a15c2b9e87fcaa}{read\+\_\+student\+\_\+deque}} (std\+::deque$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&students, const std\+::string file\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Nuskaito studentus iš failo į dek\textquotesingle{}ą \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sukuria studentų failą \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -113,36 +105,6 @@ Ignoruoja nereikalingus duomenis buferyje.
 
 Išspausdina studentus. 
 
-\mbox{\Hypertarget{Student_8cpp_ac2647d6370ace63d73a15c2b9e87fcaa}\label{Student_8cpp_ac2647d6370ace63d73a15c2b9e87fcaa}} 
-\index{Student.cpp@{Student.cpp}!read\_student\_deque@{read\_student\_deque}}
-\index{read\_student\_deque@{read\_student\_deque}!Student.cpp@{Student.cpp}}
-\doxysubsubsection{\texorpdfstring{read\_student\_deque()}{read\_student\_deque()}}
-{\footnotesize\ttfamily void read\+\_\+student\+\_\+deque (\begin{DoxyParamCaption}\item[{std\+::deque$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{students,  }\item[{const std\+::string}]{file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Nuskaito studentus iš failo į dek\textquotesingle{}ą 
-
-\mbox{\Hypertarget{Student_8cpp_a90e45dccb3dfb34d1791234c0323b97d}\label{Student_8cpp_a90e45dccb3dfb34d1791234c0323b97d}} 
-\index{Student.cpp@{Student.cpp}!read\_student\_list@{read\_student\_list}}
-\index{read\_student\_list@{read\_student\_list}!Student.cpp@{Student.cpp}}
-\doxysubsubsection{\texorpdfstring{read\_student\_list()}{read\_student\_list()}}
-{\footnotesize\ttfamily void read\+\_\+student\+\_\+list (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{students,  }\item[{const std\+::string}]{file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Nuskaito studentus iš failo į list\textquotesingle{}ą 
-
-\mbox{\Hypertarget{Student_8cpp_a07cf2fc1ccbf17ae22c9e87d89ffe7d0}\label{Student_8cpp_a07cf2fc1ccbf17ae22c9e87d89ffe7d0}} 
-\index{Student.cpp@{Student.cpp}!read\_student\_vector@{read\_student\_vector}}
-\index{read\_student\_vector@{read\_student\_vector}!Student.cpp@{Student.cpp}}
-\doxysubsubsection{\texorpdfstring{read\_student\_vector()}{read\_student\_vector()}}
-{\footnotesize\ttfamily void read\+\_\+student\+\_\+vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{students,  }\item[{const std\+::string}]{file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Nuskaito studentus iš failo į vektorių 
-
 \mbox{\Hypertarget{Student_8cpp_a18dee34eb2f5adbc0d7a6e115ef3e61a}\label{Student_8cpp_a18dee34eb2f5adbc0d7a6e115ef3e61a}} 
 \index{Student.cpp@{Student.cpp}!sort\_students@{sort\_students}}
 \index{sort\_students@{sort\_students}!Student.cpp@{Student.cpp}}
@@ -152,14 +114,4 @@ Nuskaito studentus iš failo į vektorių
 
 
 Surūšiuoja studentų vektorių 
-
-\mbox{\Hypertarget{Student_8cpp_ab94c896fe5912f7a7bb5ead5cc449f08}\label{Student_8cpp_ab94c896fe5912f7a7bb5ead5cc449f08}} 
-\index{Student.cpp@{Student.cpp}!write\_student\_file@{write\_student\_file}}
-\index{write\_student\_file@{write\_student\_file}!Student.cpp@{Student.cpp}}
-\doxysubsubsection{\texorpdfstring{write\_student\_file()}{write\_student\_file()}}
-{\footnotesize\ttfamily void write\+\_\+student\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{students,  }\item[{const std\+::string}]{file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Išveda studentus į failą 
 

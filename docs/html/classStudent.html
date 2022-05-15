@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('classStudent.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
+<p>Studentų klasė kurį paveldi iš abstrakčios klasės <a class="el" href="classHuman.html" title="Abstrakti žmogaus klasė">Human</a>.  
+ <a href="classStudent.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Student_8hpp_source.html">Student.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Student:</div>
@@ -128,10 +131,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a289dce1f57fd48d89b789efc10b822e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30cb661ab5a6f5e7684c8c4d4ab2c5b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a30cb661ab5a6f5e7684c8c4d4ab2c5b1">set_last_name</a> (std::string name) override</td></tr>
 <tr class="separator:a30cb661ab5a6f5e7684c8c4d4ab2c5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2526fc8b580639e190a2803fa36009c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a2526fc8b580639e190a2803fa36009c3">read_student</a> (std::string &amp;data)</td></tr>
-<tr class="separator:a2526fc8b580639e190a2803fa36009c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64bcc106faec2b8d529f79ca059ba37d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a64bcc106faec2b8d529f79ca059ba37d">write_student</a> (std::ostringstream &amp;ss) const</td></tr>
-<tr class="separator:a64bcc106faec2b8d529f79ca059ba37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43fb4947b3cff5e0767dd6d22dbe58f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a43fb4947b3cff5e0767dd6d22dbe58f6">calculate_averages</a> ()</td></tr>
 <tr class="memdesc:a43fb4947b3cff5e0767dd6d22dbe58f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apskaičiuoja studento galutinį pažymį  <a href="classStudent.html#a43fb4947b3cff5e0767dd6d22dbe58f6">More...</a><br /></td></tr>
 <tr class="separator:a43fb4947b3cff5e0767dd6d22dbe58f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,9 +146,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac35d31850644e0fb1338b641c2dd58a9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#ac35d31850644e0fb1338b641c2dd58a9">get_last_name</a> () const</td></tr>
 <tr class="memdesc:ac35d31850644e0fb1338b641c2dd58a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gražina pavardę  <a href="classStudent.html#ac35d31850644e0fb1338b641c2dd58a9">More...</a><br /></td></tr>
 <tr class="separator:ac35d31850644e0fb1338b641c2dd58a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c1e643e9f175e8588820df2b3db8d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#ac1c1e643e9f175e8588820df2b3db8d3">get_has_final_score</a> () const</td></tr>
+<tr class="memdesc:ac1c1e643e9f175e8588820df2b3db8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grąžina kintamąjį nurodantį ar studentas turi apskaičiuotą galutinį pažymį  <a href="classStudent.html#ac1c1e643e9f175e8588820df2b3db8d3">More...</a><br /></td></tr>
+<tr class="separator:ac1c1e643e9f175e8588820df2b3db8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168a47675c330234042d72b4ed92ec3a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a168a47675c330234042d72b4ed92ec3a">get_test_score</a> () const</td></tr>
+<tr class="memdesc:a168a47675c330234042d72b4ed92ec3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grąžina egzamino pažymį  <a href="classStudent.html#a168a47675c330234042d72b4ed92ec3a">More...</a><br /></td></tr>
+<tr class="separator:a168a47675c330234042d72b4ed92ec3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadea61fed99a951155e28c4f6109365e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#aadea61fed99a951155e28c4f6109365e">get_final_score</a> () const</td></tr>
 <tr class="memdesc:aadea61fed99a951155e28c4f6109365e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gražina galutinį pažymį  <a href="classStudent.html#aadea61fed99a951155e28c4f6109365e">More...</a><br /></td></tr>
 <tr class="separator:aadea61fed99a951155e28c4f6109365e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a908afda709d451a3ad557d96d0c837dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#a908afda709d451a3ad557d96d0c837dd">set_final_score</a> (unsigned final_score)</td></tr>
+<tr class="memdesc:a908afda709d451a3ad557d96d0c837dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Settina galutinį pažymį  <a href="classStudent.html#a908afda709d451a3ad557d96d0c837dd">More...</a><br /></td></tr>
+<tr class="separator:a908afda709d451a3ad557d96d0c837dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee9e2d56c453577ed9e7de7e5ade8fa4"><td class="memItemLeft" align="right" valign="top">const vector&lt; unsigned &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStudent.html#aee9e2d56c453577ed9e7de7e5ade8fa4">get_scores</a> () const</td></tr>
 <tr class="memdesc:aee9e2d56c453577ed9e7de7e5ade8fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gražiną pažymių vektorių  <a href="classStudent.html#aee9e2d56c453577ed9e7de7e5ade8fa4">More...</a><br /></td></tr>
 <tr class="separator:aee9e2d56c453577ed9e7de7e5ade8fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,8 +198,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:acb88f5101614a04b81cb39d1330ffff8 inherit pro_attribs_classHuman"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Studentų klasė kurį paveldi iš abstrakčios klasės <a class="el" href="classHuman.html" title="Abstrakti žmogaus klasė">Human</a></p>
-<p >Ši klasė leidžia sukurti Studento objektą kuriam galima priskirti vardą, pavardę, namų darbų pažymius, egzamino pažymį ir galima apskaičiuoti galutinį pažymį </p>
+<div class="textblock"><p >Studentų klasė kurį paveldi iš abstrakčios klasės <a class="el" href="classHuman.html" title="Abstrakti žmogaus klasė">Human</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad1acbcd2c458613945d4bf4618d1ae47" name="ad1acbcd2c458613945d4bf4618d1ae47"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1acbcd2c458613945d4bf4618d1ae47">&#9670;&nbsp;</a></span>Student() <span class="overload">[1/4]</span></h2>
@@ -402,6 +409,25 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ac1c1e643e9f175e8588820df2b3db8d3" name="ac1c1e643e9f175e8588820df2b3db8d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c1e643e9f175e8588820df2b3db8d3">&#9670;&nbsp;</a></span>get_has_final_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Student::get_has_final_score </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grąžina kintamąjį nurodantį ar studentas turi apskaičiuotą galutinį pažymį </p>
+
+</div>
+</div>
 <a id="ac35d31850644e0fb1338b641c2dd58a9" name="ac35d31850644e0fb1338b641c2dd58a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac35d31850644e0fb1338b641c2dd58a9">&#9670;&nbsp;</a></span>get_last_name()</h2>
 
@@ -459,6 +485,25 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a168a47675c330234042d72b4ed92ec3a" name="a168a47675c330234042d72b4ed92ec3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168a47675c330234042d72b4ed92ec3a">&#9670;&nbsp;</a></span>get_test_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Student::get_test_score </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grąžina egzamino pažymį </p>
+
+</div>
+</div>
 <a id="ae58f6dde2999d82e728b383d87aceaa4" name="ae58f6dde2999d82e728b383d87aceaa4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae58f6dde2999d82e728b383d87aceaa4">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -504,28 +549,31 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a2526fc8b580639e190a2803fa36009c3" name="a2526fc8b580639e190a2803fa36009c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2526fc8b580639e190a2803fa36009c3">&#9670;&nbsp;</a></span>read_student()</h2>
+<a id="a908afda709d451a3ad557d96d0c837dd" name="a908afda709d451a3ad557d96d0c837dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a908afda709d451a3ad557d96d0c837dd">&#9670;&nbsp;</a></span>set_final_score()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Student::read_student </td>
+          <td class="memname">void Student::set_final_score </td>
           <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>final_score</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p >Nuskaito duomenis apie studentą iš string'o</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>Reference'as į duomenų string'ą </td></tr>
-  </table>
-  </dd>
-</dl>
+
+<p>Settina galutinį pažymį </p>
 
 </div>
 </div>
@@ -594,31 +642,6 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="classHuman.html#a52ce350176787c77b36e0a1df71e3039">Human</a>.</p>
-
-</div>
-</div>
-<a id="a64bcc106faec2b8d529f79ca059ba37d" name="a64bcc106faec2b8d529f79ca059ba37d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64bcc106faec2b8d529f79ca059ba37d">&#9670;&nbsp;</a></span>write_student()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Student::write_student </td>
-          <td>(</td>
-          <td class="paramtype">std::ostringstream &amp;&#160;</td>
-          <td class="paramname"><em>ss</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Išveda studento duomenis į stringstreamą</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ss</td><td>stringstreamas į kurį bus išvesti duomenys </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -706,7 +729,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>headers/<a class="el" href="Student_8hpp_source.html">Student.hpp</a></li>
-<li><a class="el" href="Student_8cpp.html">Student.cpp</a></li>
+<li>src/<a class="el" href="Student_8cpp.html">Student.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

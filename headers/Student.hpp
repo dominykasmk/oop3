@@ -51,10 +51,6 @@ class Human {
 
 
 /// Studentų klasė kurį paveldi iš abstrakčios klasės Human
-///
-/// Ši klasė leidžia sukurti Studento objektą kuriam galima
-/// priskirti vardą, pavardę, namų darbų pažymius, egzamino
-/// pažymį ir galima apskaičiuoti galutinį pažymį
 class Student : public Human {
     string first_name;
     string last_name;

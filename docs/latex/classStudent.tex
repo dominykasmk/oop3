@@ -2,6 +2,11 @@
 \label{classStudent}\index{Student@{Student}}
 
 
+Studentų klasė kurį paveldi iš abstrakčios klasės \mbox{\hyperlink{classHuman}{Human}}.  
+
+
+
+
 {\ttfamily \#include $<$Student.\+hpp$>$}
 
 Inheritance diagram for Student\+:\begin{figure}[H]
@@ -29,10 +34,6 @@ void \mbox{\hyperlink{classStudent_a289dce1f57fd48d89b789efc10b822e8}{set\+\_\+f
 \item 
 void \mbox{\hyperlink{classStudent_a30cb661ab5a6f5e7684c8c4d4ab2c5b1}{set\+\_\+last\+\_\+name}} (std\+::string name) override
 \item 
-void \mbox{\hyperlink{classStudent_a2526fc8b580639e190a2803fa36009c3}{read\+\_\+student}} (std\+::string \&data)
-\item 
-void \mbox{\hyperlink{classStudent_a64bcc106faec2b8d529f79ca059ba37d}{write\+\_\+student}} (std\+::ostringstream \&ss) const
-\item 
 void \mbox{\hyperlink{classStudent_a43fb4947b3cff5e0767dd6d22dbe58f6}{calculate\+\_\+averages}} ()
 \begin{DoxyCompactList}\small\item\em Apskaičiuoja studento galutinį pažymį \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStudent_adda6ad7b0a3edd737b1a132731608fae}{print\+\_\+student}} () const
@@ -43,8 +44,14 @@ string \mbox{\hyperlink{classStudent_a462f8c273e78acacca2e9523c7d41f85}{get\+\_\
 \begin{DoxyCompactList}\small\item\em Gražina vardą \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{classStudent_ac35d31850644e0fb1338b641c2dd58a9}{get\+\_\+last\+\_\+name}} () const
 \begin{DoxyCompactList}\small\item\em Gražina pavardę \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classStudent_ac1c1e643e9f175e8588820df2b3db8d3}{get\+\_\+has\+\_\+final\+\_\+score}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina kintamąjį nurodantį ar studentas turi apskaičiuotą galutinį pažymį \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classStudent_a168a47675c330234042d72b4ed92ec3a}{get\+\_\+test\+\_\+score}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina egzamino pažymį \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classStudent_aadea61fed99a951155e28c4f6109365e}{get\+\_\+final\+\_\+score}} () const
 \begin{DoxyCompactList}\small\item\em Gražina galutinį pažymį \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStudent_a908afda709d451a3ad557d96d0c837dd}{set\+\_\+final\+\_\+score}} (unsigned final\+\_\+score)
+\begin{DoxyCompactList}\small\item\em Settina galutinį pažymį \end{DoxyCompactList}\item 
 const vector$<$ unsigned $>$ \& \mbox{\hyperlink{classStudent_aee9e2d56c453577ed9e7de7e5ade8fa4}{get\+\_\+scores}} () const
 \begin{DoxyCompactList}\small\item\em Gražiną pažymių vektorių \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
@@ -62,9 +69,7 @@ operatoriaus perdengimas \end{quote}
 
 
 \doxysubsection{Detailed Description}
-Studentų klasė kurį paveldi iš abstrakčios klasės \mbox{\hyperlink{classHuman}{Human}}
-
-Ši klasė leidžia sukurti Studento objektą kuriam galima priskirti vardą, pavardę, namų darbų pažymius, egzamino pažymį ir galima apskaičiuoti galutinį pažymį 
+Studentų klasė kurį paveldi iš abstrakčios klasės \mbox{\hyperlink{classHuman}{Human}}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}\label{classStudent_ad1acbcd2c458613945d4bf4618d1ae47}} 
@@ -150,6 +155,16 @@ Gražina galutinį pažymį
 
 Gražina vardą 
 
+\mbox{\Hypertarget{classStudent_ac1c1e643e9f175e8588820df2b3db8d3}\label{classStudent_ac1c1e643e9f175e8588820df2b3db8d3}} 
+\index{Student@{Student}!get\_has\_final\_score@{get\_has\_final\_score}}
+\index{get\_has\_final\_score@{get\_has\_final\_score}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{get\_has\_final\_score()}{get\_has\_final\_score()}}
+{\footnotesize\ttfamily bool Student\+::get\+\_\+has\+\_\+final\+\_\+score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Grąžina kintamąjį nurodantį ar studentas turi apskaičiuotą galutinį pažymį 
+
 \mbox{\Hypertarget{classStudent_ac35d31850644e0fb1338b641c2dd58a9}\label{classStudent_ac35d31850644e0fb1338b641c2dd58a9}} 
 \index{Student@{Student}!get\_last\_name@{get\_last\_name}}
 \index{get\_last\_name@{get\_last\_name}!Student@{Student}}
@@ -180,6 +195,16 @@ Gražina pažymių skaičių
 
 Gražiną pažymių vektorių 
 
+\mbox{\Hypertarget{classStudent_a168a47675c330234042d72b4ed92ec3a}\label{classStudent_a168a47675c330234042d72b4ed92ec3a}} 
+\index{Student@{Student}!get\_test\_score@{get\_test\_score}}
+\index{get\_test\_score@{get\_test\_score}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{get\_test\_score()}{get\_test\_score()}}
+{\footnotesize\ttfamily unsigned Student\+::get\+\_\+test\+\_\+score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Grąžina egzamino pažymį 
+
 \mbox{\Hypertarget{classStudent_ae58f6dde2999d82e728b383d87aceaa4}\label{classStudent_ae58f6dde2999d82e728b383d87aceaa4}} 
 \index{Student@{Student}!operator=@{operator=}}
 \index{operator=@{operator=}!Student@{Student}}
@@ -196,19 +221,16 @@ Gražiną pažymių vektorių
 
 Išprintina duomenis apie studentą 
 
-\mbox{\Hypertarget{classStudent_a2526fc8b580639e190a2803fa36009c3}\label{classStudent_a2526fc8b580639e190a2803fa36009c3}} 
-\index{Student@{Student}!read\_student@{read\_student}}
-\index{read\_student@{read\_student}!Student@{Student}}
-\doxysubsubsection{\texorpdfstring{read\_student()}{read\_student()}}
-{\footnotesize\ttfamily void Student\+::read\+\_\+student (\begin{DoxyParamCaption}\item[{std\+::string \&}]{data }\end{DoxyParamCaption})}
-
-Nuskaito duomenis apie studentą iš string\textquotesingle{}o
+\mbox{\Hypertarget{classStudent_a908afda709d451a3ad557d96d0c837dd}\label{classStudent_a908afda709d451a3ad557d96d0c837dd}} 
+\index{Student@{Student}!set\_final\_score@{set\_final\_score}}
+\index{set\_final\_score@{set\_final\_score}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{set\_final\_score()}{set\_final\_score()}}
+{\footnotesize\ttfamily void Student\+::set\+\_\+final\+\_\+score (\begin{DoxyParamCaption}\item[{unsigned}]{final\+\_\+score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-\begin{DoxyParams}{Parameters}
-{\em data} & Reference\textquotesingle{}as į duomenų string\textquotesingle{}ą \\
-\hline
-\end{DoxyParams}
+
+Settina galutinį pažymį 
+
 \mbox{\Hypertarget{classStudent_a289dce1f57fd48d89b789efc10b822e8}\label{classStudent_a289dce1f57fd48d89b789efc10b822e8}} 
 \index{Student@{Student}!set\_first\_name@{set\_first\_name}}
 \index{set\_first\_name@{set\_first\_name}!Student@{Student}}
@@ -239,19 +261,6 @@ Pavardės setteris
 
 Implements \mbox{\hyperlink{classHuman_a52ce350176787c77b36e0a1df71e3039}{Human}}.
 
-\mbox{\Hypertarget{classStudent_a64bcc106faec2b8d529f79ca059ba37d}\label{classStudent_a64bcc106faec2b8d529f79ca059ba37d}} 
-\index{Student@{Student}!write\_student@{write\_student}}
-\index{write\_student@{write\_student}!Student@{Student}}
-\doxysubsubsection{\texorpdfstring{write\_student()}{write\_student()}}
-{\footnotesize\ttfamily void Student\+::write\+\_\+student (\begin{DoxyParamCaption}\item[{std\+::ostringstream \&}]{ss }\end{DoxyParamCaption}) const}
-
-Išveda studento duomenis į stringstreamą
-
-
-\begin{DoxyParams}{Parameters}
-{\em ss} & stringstreamas į kurį bus išvesti duomenys \\
-\hline
-\end{DoxyParams}
 
 
 \doxysubsection{Friends And Related Function Documentation}
@@ -284,4 +293,4 @@ operatoriaus perdengimas \end{quote}
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 headers/\mbox{\hyperlink{Student_8hpp}{Student.\+hpp}}\item 
-\mbox{\hyperlink{Student_8cpp}{Student.\+cpp}}\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{Student_8cpp}{Student.\+cpp}}\end{DoxyCompactItemize}
