@@ -47,3 +47,4 @@ _deps
 out/
 test/
 student_files/
+tests/tests

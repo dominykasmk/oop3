@@ -1,6 +1,4 @@
 #include "../headers/Student.hpp"
-
-#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
 
@@ -14,21 +12,36 @@ TEST_CASE( "Pažymių palyginimas", "[compare_by_final_score]" ) {
 
 TEST_CASE( "Studentų failo nuskaitymas į vektorių", "[read_student_file]" ) {
     vector<Student> students; 
-    string file_name{"studentai1000.txt"};
-    read_student_file(students, file_name);
+    read_student_file(students, "studentai1000.txt");
 
-    REQUIRE_FALSE( students.empty() );
+    CHECK_FALSE( students.empty() );
     REQUIRE_THROWS( read_student_file(students, "bet_koks_failas.txt") );
 }
 
 
-TEST_CASE( "Studentų konteinerio rašymas į failą", "write_student_file" ) {
+TEST_CASE( "Studentų konteinerio rašymas į failą", "[write_student_file]" ) {
     vector<Student> students; 
-    string file_name{"studentai1000.txt"};
-    read_student_file(students, file_name);
+    read_student_file(students, "studentai1000.txt");
 
-    write_student_file(students, file_name);
-    std::ifstream student_file;
+    write_student_file(students, "studentai_output.txt");
+    std::ifstream student_file("studentai_output.txt");
     bool isEmpty = student_file.peek() == EOF;
+    remove("studentai_output.txt");
     REQUIRE_FALSE( isEmpty );
+}
+
+
+TEST_CASE( "Studentų vidurkių apskaičiavimas", "[calculate_averages]" ) {
+    string first_name = "Vardas";
+    string last_name = "Pavarde";
+
+    vector<unsigned> temp_scores;
+    for (unsigned i{}; i < 5; i++) {
+        temp_scores.push_back(generate_random_score());
+    }
+    unsigned test_score = generate_random_score();
+    Student student{first_name, last_name, test_score, temp_scores};
+
+    CHECK( student.get_has_final_score() == true );
+    CHECK( student.get_final_score() != 0 );
 }

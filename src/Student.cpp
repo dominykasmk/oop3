@@ -20,6 +20,7 @@ Student::Student(std::string& data)
 Student::Student(std::string first_name, std::string last_name, unsigned test_score, std::vector<unsigned> scores)
     : first_name { first_name }, last_name { last_name }, test_score { test_score }, scores { scores }
 {
+    calculate_averages();
 }
 
 void Student::print_student() const
@@ -210,7 +211,6 @@ void create_student_file(const std::string file_name, const unsigned student_amo
         unsigned test_score = generate_random_score();
         
         Student student{first_name, last_name, test_score, temp_scores};
-        student.calculate_averages();
         students.push_back(student);
     }
 
