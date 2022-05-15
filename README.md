@@ -30,9 +30,9 @@
 ## [v0.5](https://github.com/dominykasmk/oop2/tree/v0.5) (06/04/2022)
  - Implementuotas testas tikrinantis duomenų nuskaitymą iš failų ir rūšiavimą į dvi kategorijas naudojant vektorių, listą ir deką
 
-![](vector.png)
-![](list.png)
-![](deque.png)
+![](images/vector.png)
+![](images/list.png)
+![](images/deque.png)
 
 ## [v1.0](https://github.com/dominykasmk/oop2/tree/v1.0) (17/04/2022)
  - Ši versija matuoja kaip skiriasi studentų rušiavimas į dvi grupes naudojant vieną naują/du naujus konteinerius naudojant vektorių, list'ą arba dek'ą
@@ -41,19 +41,19 @@
  - Palyginau programos veikimo spartą naudojant struktūras ir klases ir runninant testus su vektoriais ir 100000 ir 1000000 studentų failais
 
 ### Struktūros
-![](struct.png)
+![](images/struct.png)
 
 ### Klasės
-![](class.png)
+![](images/class.png)
 
  - Palyginau testų spartą naudojant O1, O2 ir O3 kompiliatoriaus optimizavimo flagus
  
 ### OP1
-![](OP1.png)
+![](images/OP1.png)
 ### OP2
-![](OP2.png)
+![](images/OP2.png)
 ### OP3
-![](OP3.png)
+![](images/OP3.png)
 
 ## [v1.2](https://github.com/dominykasmk/oop3/tree/v1.2) (08/05/2022)
  - Pridėjau 'rule of three' konstriuktorius ir << ir >> operatorius studentų klasei
@@ -62,6 +62,6 @@
 ## [v1.5](https://github.com/dominykasmk/oop3/tree/v1.5) (11/05/2022)
  - Parašiau abstrakčią klasę Human iš kurios dabar paveldėja Student
 
-## [v2.0](https://github.com/dominykasmk/oop3/tree/v2.0) (11/05/2022)
+## [v2.0](https://github.com/dominykasmk/oop3/tree/v2.0) (15/05/2022)
  - Pridėjau doxygen dokumentaciją
  - Pridėjau unit testus kai kuriom funkcijom
